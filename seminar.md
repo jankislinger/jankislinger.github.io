@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Seminar
+hidden: "yes"
 ---
 
 ## Uvod

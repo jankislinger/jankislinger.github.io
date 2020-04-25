@@ -3,7 +3,7 @@ title:            Jan Kislinger
 tagline:          'Kurzy R'
 description:      'Profesionální kurzy datové analýzy, machine learningu a vizualizace v R'
 url:              https://kurzy-r.jankislinger.cz
-baseurl:          ''
+baseurl:          '/'
 paginate:         5
 
 # About and contact
