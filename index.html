@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jan Kislinger | Data Scientist & PhD Researcher</title>
+  <!-- Tailwind CSS with class-based dark mode -->
+  <script>
+    tailwind = window.tailwind || {};
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {},
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 transition-colors duration-500 ease-in-out dark:bg-gray-900 dark:text-gray-200">
+  <!-- Navigation -->
+  <header class="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50 transition-shadow duration-300">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold hover:text-blue-600 dark:hover:text-blue-400">Jan Kislinger</a>
+      <div class="md:hidden">
+        <button id="menu-btn" class="focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" id="menu-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" id="menu-close" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <ul id="nav-list" class="space-x-6 hidden md:flex">
+        <li><a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a></li>
+        <li><a href="#resume" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Resume</a></li>
+        <li><a href="#blog" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a></li>
+        <li>
+          <button id="theme-toggle" class="ml-4 p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition" aria-label="Toggle dark mode">
+            <svg id="icon-light" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h1M3 12H2m15.364-6.364l.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707" />
+            </svg>
+            <svg id="icon-dark" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.293 17.293A8 8 0 018.707 8.707 8 8 0 1017.293 17.293z" />
+            </svg>
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-gray-800">
+      <ul class="px-6 py-4 space-y-4">
+        <li><a href="#about" class="block hover:text-blue-600 dark:hover:text-blue-400">About</a></li>
+        <li><a href="#resume" class="block hover:text-blue-600 dark:hover:text-blue-400">Resume</a></li>
+        <li><a href="#blog" class="block hover:text-blue-600 dark:hover:text-blue-400">Blog</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="container mx-auto px-6 py-20 text-center">
+    <!-- Profile Image -->
+    <img src="https://blog.jankislinger.cz/images/logo.png" alt="Jan Kislinger" class="mx-auto w-32 h-32 rounded-full shadow-lg mb-6 border-4 border-white dark:border-gray-700" />
+    <h1 class="text-5xl md:text-6xl font-extrabold mb-4">Jan Kislinger</h1>
+    <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400">Data Scientist @ Peacock & Sky | PhD Researcher in Recommender Systems</p>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="container mx-auto px-6 py-12 max-w-3xl">
+    <h2 class="text-4xl font-semibold mb-6 border-b-2 border-blue-600 inline-block">About Me</h2>
+    <p class="leading-relaxed text-lg">I'm a passionate data scientist and mathematician specializing in recommendation engines. Currently pursuing a PhD at Czech Technical University, I focus on scalable multi-layered clustering for personalized streaming experiences.</p>
+  </section>
+
+  <!-- Resume -->
+  <section id="resume" class="container mx-auto px-6 py-12 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
+    <h2 class="text-4xl font-semibold mb-4">Resume</h2>
+    <a href="jan-kislinger.pdf" download class="inline-block bg-blue-600 text-white px-5 py-3 rounded-lg shadow-md hover:bg-blue-700 transition">Download PDF</a>
+    <div class="mt-8 grid gap-8 md:grid-cols-2">
+      <div class="space-y-4">
+        <h3 class="text-2xl font-semibold">Experience Highlights</h3>
+        <ul class="space-y-2">
+          <li class="flex items-start">📅 <span class="ml-2"><strong>Data Science Manager @ Sky</strong> (Apr 2024 – Present): Leading a team of 4 building personalized sports recommendation pipelines.</span></li>
+          <li class="flex items-start">📅 <span class="ml-2"><strong>Data Scientist @ Sky</strong> (Jun 2023 – Mar 2024): Localized and deployed recommender models across international markets.</span></li>
+          <li class="flex items-start">📅 <span class="ml-2"><strong>Tech Lead @ Showmax</strong> (May 2020 – May 2023): Architected end-to-end ML pipelines (Airflow, Redis) for content personalization.</span></li>
+          <li class="flex items-start">📅 <span class="ml-2"><strong>Data Science Lead @ Oddin.gg</strong> (Jul 2018 – Apr 2020): Developed real-time e-sports ML models via gRPC servers.</span></li>
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <h3 class="text-2xl font-semibold">Education & Skills</h3>
+        <ul class="space-y-2">
+          <li>🎓 <strong>PhD Informatics</strong> @ Czech Technical University (2024 – Present)</li>
+          <li>🎓 <strong>MA Probability, Statistics & Optimization</strong> @ Charles University (2017)</li>
+          <li>🎓 <strong>BA Financial Mathematics</strong> @ Charles University (2014)</li>
+        </ul>
+        <h4 class="mt-4 text-xl font-semibold">Technical Stack</h4>
+        <div class="flex flex-wrap gap-2 mt-2">
+          <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Python</span>
+          <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">TensorFlow</span>
+          <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Polars</span>
+          <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">BigQuery</span>
+          <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Rust</span>
+          <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">SQL</span>
+          <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm">Flask</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section id="blog" class="container mx-auto px-6 py-12 max-w-3xl">
+    <h2 class="text-4xl font-semibold mb-6 border-b-2 border-blue-600 inline-block">Latest Blog Post</h2>
+    <article class="group bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 hover:shadow-xl transition-shadow duration-300">
+      <h3 class="text-2xl font-bold mb-2 group-hover:text-blue-600 transition-colors">Understanding Multi-Layered Clustering in Recommender Systems</h3>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">August 1, 2025</p>
+      <p class="leading-relaxed mb-4">In this post, I dive into how multi-layered clustering can structure recommendation carousels on streaming platforms, improving both diversity and relevance. I'll explore algorithmic approaches and share evaluation metrics.</p>
+      <a href="#" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">Read More →</a>
+    </article>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 py-8">
+    <div class="container mx-auto px-6 text-center">
+      <p class="flex justify-center items-center gap-2">📧 <a href="mailto:jan.kislinger@gmail.com" class="underline hover:text-blue-600 dark:hover:text-blue-400">jan.kislinger@gmail.com</a> | 📞 <span>+420 604 266 706</span></p>
+      <p class="mt-2 text-sm">© 2025 Jan Kislinger</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const openIcon = document.getElementById('menu-open');
+    const closeIcon = document.getElementById('menu-close');
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      openIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    });
+
+    const themeToggle = document.getElementById('theme-toggle');
+    const iconLight = document.getElementById('icon-light');
+    const iconDark = document.getElementById('icon-dark');
+    const root = document.documentElement;
+
+    themeToggle.addEventListener('click', () => {
+      if (root.classList.contains('dark')) {
+        root.classList.remove('dark');
+        iconDark.classList.add('hidden');
+        iconLight.classList.remove('hidden');
+      } else {
+        root.classList.add('dark');
+        iconLight.classList.add('hidden');
+        iconDark.classList.remove('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
