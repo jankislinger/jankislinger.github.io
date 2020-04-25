@@ -1,0 +1,14 @@
+---
+title: "Title"
+author: author
+post_date: 2020-04-25
+layout: post
+# categories: cat
+output: jekyllthat::jekylldown
+excerpt_separator: <!--more-->
+---
+
+```{r echo=FALSE}
+plot(1:5)
+```
+

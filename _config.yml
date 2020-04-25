@@ -1,0 +1,24 @@
+# Setup
+title:            Jan Kislinger
+tagline:          'Kurzy R'
+description:      'Profesionální kurzy datové analýzy, machine learningu a vizualizace v R'
+url:              https://kurzy-r.jankislinger.cz
+baseurl:          ''
+paginate:         5
+
+# About and contact
+author:
+  name:           'Jan Kislinger'
+  url:            https://jankislinger.cz
+
+# Exclude
+exclude:
+  - "*.Rmd"
+
+  # Gems
+plugins:
+  - jekyll-paginate
+  - jekyll-gist
+
+# Custom vars
+version:          3.0.0
