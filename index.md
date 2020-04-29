@@ -1,17 +1,30 @@
 ---
 layout: page
+menu: "yes"
 title: Kurzy R
 title-menu: Úvod
 ---
 
-Vyučuji jazyk R a jeho aplikace do *data science*. Kurzy jsou určené pro studenty, kteří chtejí začít s datovou 
+Vyučuji jazyk R a jeho aplikace v *data science*. Kurzy jsou určené pro studenty, kteří chtejí začít s datovou 
 analytikou, i pro profesionály, kteří si chtějí rozšířit své možnosti o další nástroj. Učím zejména moderní metody 
-jazyka R, čímž jsou mé kurzy unikátní.
+jazyka R pomocí *tidyverse*, čímž jsou mé kurzy unikátní.
 
 * Datová analýza a vizualizace
 * Statistika
 * Machine learning
 * Programování v R
+
+
+### Co je *tidyverse*?
+
+Tidyverse je soubor knihoven v R speciálně uzpůsobených pro práci s daty. Práce s daty je díky němu intuitivní a 
+výsledný kód velmi snadno čitelný. Začátečník pomocí něj dokáže na pár řádcích kódu udělat takovou úpravu dat, která by 
+v základním R vyžadovala zkušeného programátora.
+
+Mezi nejpoužívanější knihovny patří *dplyr* pro úpravu dat, *ggplot2* pro vizualizaci a *purrr* pro funkcionální 
+programování. Patří sem však i specifické balíky pro jednoduché načítání dat, práci s textem, nebo i stahování dat z 
+webových stránek. Kompletní seznam knihoven naleznete na [oficiálních stránkách tidyverse](https://www.tidyverse.org/){:target="_blank"}.
+
 
 ### O lektorovi
 
@@ -33,3 +46,4 @@ Na všech vysokých školách a ve většině soukromých kurzech se učí "zák
 připravená a chceme pouze provádět statistické výpočty. Což funguje právě jen v kurzech statistiky. V reálném světě je
 většina práce (60 - 80 %) právě příprava a čištění dat. A právě na tuto část existuje spousta užitečných knihoven, o 
 kterých mluvím na svých kurzech.
+

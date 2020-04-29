@@ -127,3 +127,88 @@ library(caret)
 varImp(rf)
 
 ```
+
+
+### Dotazy & pripominky
+
+* poslani kodu predem
+* studijni materialy
+  * Elements of Stat Learning [https://web.stanford.edu/~hastie/Papers/ESLII.pdf](https://web.stanford.edu/~hastie/Papers/ESLII.pdf)
+  * Vignettes [http://www.milbo.org/rpart-plot/prp.pdf](http://www.milbo.org/rpart-plot/prp.pdf)
+* ggtree
+* jak shrnout vysledky ML algoritmu
+
+
+## Neural nets
+
+### Iris
+
+```r
+library(keras)
+
+x_train <- model.matrix(Species ~ 0 + ., iris)
+y_train <- to_categorical(as.integer(iris$Species) - 1, 3)
+
+model <- keras_model_sequential() %>% 
+  layer_dense(4, activation = 'softmax', input_shape = c(4)) %>% 
+  layer_dense(3, activation = 'softmax')
+
+summary(model)
+
+model %>% compile(
+  loss = 'categorical_crossentropy',
+  optimizer = optimizer_adam(lr=0.01),
+  metrics = c('accuracy'),
+)
+
+history <- model %>% fit(
+  x_train, y_train, 
+  epochs = 300, batch_size = 128
+)
+
+get_weights(model)
+
+```
+
+### Mnist conv
+
+```r
+library(keras)
+mnist <- dataset_mnist()
+x_train <- mnist$train$x
+y_train <- mnist$train$y
+x_test <- mnist$test$x
+y_test <- mnist$test$y
+
+x_train <- array_reshape(x_train, c(dim(x_train), 1)) / 255
+x_test <- array_reshape(x_test, c(dim(x_test), 1)) / 255
+
+y_train <- to_categorical(y_train, 10)
+y_test <- to_categorical(y_test, 10)
+
+dim(x_train)
+
+model <- keras_model_sequential() %>% 
+  layer_conv_2d(4, 2, padding='same', activation = 'relu', input_shape = c(28, 28, 1)) %>% 
+  layer_max_pooling_2d() %>% 
+  layer_conv_2d(8, 2, padding='same', activation = 'relu') %>% 
+  layer_max_pooling_2d() %>% 
+  layer_conv_2d(12, 2, padding='same', activation = 'relu') %>% 
+  layer_max_pooling_2d() %>% 
+  layer_flatten() %>% 
+  layer_dense(10, activation = 'softmax')
+  
+summary(model)
+
+model %>% compile(
+  loss = 'categorical_crossentropy',
+  optimizer = 'adam',
+  metrics = c('accuracy')
+)
+
+history <- model %>% fit(
+  x_train, y_train, 
+  epochs = 30, batch_size = 128, 
+  validation_split = 0.2
+)
+```

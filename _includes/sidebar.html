@@ -20,7 +20,7 @@
       {% assign pages_list = site.pages %}
       {% for node in pages_list %}
         {% if node.title != null %}
-          {% if node.layout == "page" and node.hidden != "yes" %}
+          {% if node.layout == "page" and node.menu == "yes" %}
             <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url | absolute_url }}">
               {% if node.title-menu != null %}
                 {{ node.title-menu }}
@@ -33,6 +33,7 @@
       {% endfor %}
     </nav>
 
-    <p>&copy; {{ site.time | date: '%Y' }}. All rights reserved.</p>
+<!--    <p>&copy; {{ site.time | date: '%Y' }}. All rights reserved.</p>-->
+    <p><a href="mailto:jan.kislinger@gmail.com" target="_blank">jan.kislinger@gmail.com</a></p>
   </div>
 </div>
