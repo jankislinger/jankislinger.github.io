@@ -4,11 +4,11 @@ menu: "yes"
 title: Pro veřejnost
 ---
 
-Ve spolupráci s organizací  [Minervo](https://minervo.cz) se přinášíme dostupné kurzy, které pomáhají.
+Ve spolupráci s organizací  [Minervo](https://minervo.cz){:target="_blank"} přinášíme dostupné kurzy, které pomáhají.
 Připravili jsme několik sérií seminářů zaměřených na datovou analýzu, machine learning a vizualizaci v jazyce R.
 
 V současné době nejsou vypsané žádné termíny kurzů. Pokud chcete být informováni o dalších vypsaných termínech jako 
-první, tak se přidejte na [náš mailing list](https://forms.gle/5ynrNNoKdSjby5MF6).
+první, tak se přidejte na [náš mailing list](https://forms.gle/5ynrNNoKdSjby5MF6){:target="_blank"}.
 
 
 ### Úvod do datové analýzy a vizualizace

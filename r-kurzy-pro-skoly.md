@@ -11,7 +11,7 @@ R je nejpoužívanější jazyk pro statistiku a je proto zařazen do výuky jak
 V naprosté většině českých vysokých škol je však vyučován ve své základní formě a moderní přístupy knihovny *tidyverse* jsou tak opomíjeny.
 Právě tato knihovna stojí za rostoucí popularitou jazyka R v posledních letech.
 
-Kurz svým obsahem vychází z předmětu [STAT 545 na UBC](https://stat545.stat.ubc.ca/) - v současné době nejpopulárnější kurz zaměřený na data science.
+Kurz svým obsahem vychází z předmětu [STAT 545 na UBC](https://stat545.stat.ubc.ca/){:target="_blank"} - v současné době nejpopulárnější kurz zaměřený na data science.
 Zabývá se datovou analýzou, ovšem bez statistické inference.
 Ta se předpokládá, že je vyučvána v samostatném kurzu.
 Cílem tedy není nahrazovat stávající kurz statistiky, ale doplnit jej o praktickou část práce s daty.
