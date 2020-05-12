@@ -5,6 +5,7 @@ description:      'Profesionální kurzy datové analýzy, machine learningu a v
 url:              https://kurzy-r.jankislinger.cz
 baseurl:          '/'
 paginate:         5
+paginate_path: "blog/page:num/"
 
 # About and contact
 author:
