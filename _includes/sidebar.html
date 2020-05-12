@@ -31,6 +31,9 @@
           {% endif %}
         {% endif %}
       {% endfor %}
+
+      <a class="sidebar-nav-item{% if page.title == 'Blog' %} active{% endif %}" href="{{ site.baseurl }}blog/index.html">Blog</a>
+
     </nav>
 
 <!--    <p>&copy; {{ site.time | date: '%Y' }}. All rights reserved.</p>-->
