@@ -139,7 +139,7 @@ plot(p)
 Poslední úpravy provedeme na popiskách grafu. Názvy os odstraníme a
 přidáme nadpis a podnadpis. Na ose *y* zvolíme popisky po 200
 tisících, které můžeme upravit do libovolného tvaru. Všimněte si, že
-volba tenkých svislých čar (`minor_breaks`) nijak neupravuje rozsah
+volba svislých čar (`breaks` a `minor_breaks`) nijak neupravuje rozsah
 grafu. Někomu se líbí šedivé pozadí grafu, já preferuji jednodušší
 vzhled. Motiv si snadno změníte pomocí některé z vrstev `theme_*`.
 
@@ -147,9 +147,10 @@ vzhled. Motiv si snadno změníte pomocí některé z vrstev `theme_*`.
 p <- p +
   labs(x = NULL, y = NULL, title = "Covid-19 potvrzené případy", 
        subtitle = paste("datum:", selected_date)) +
-  scale_y_continuous(breaks = seq(0, 1e6, 2e5),
-                     labels = c("0", paste0(seq(200, 800, 200), "k"), "1M"),
-                     minor_breaks = seq(0, 2e6, 1e5)) +
+  scale_y_continuous(
+    breaks = seq(0, 2e6, 2e5),
+    labels = c("0", paste0(seq(200, 800, 200), "k"), paste0(seq(1, 2, 0.2), "M")),
+    minor_breaks = seq(0, 2e6, 1e5)) +
   theme_minimal()
 plot(p)
 ```
@@ -168,9 +169,10 @@ p <- ggplot(data_day, aes(rank)) +
   expand_limits(y = -200000) +
   labs(x = NULL, y = NULL, title = "Covid-19 potvrzené případy", 
        subtitle = paste("datum:", selected_date)) +
-  scale_y_continuous(breaks = seq(0, 1e6, 2e5),
-                     labels = c("0", paste0(seq(200, 800, 200), "k"), "1M"),
-                     minor_breaks = seq(0, 2e6, 1e5)) +
+  scale_y_continuous(
+    breaks = seq(0, 2e6, 2e5),
+    labels = c("0", paste0(seq(200, 800, 200), "k"), paste0(seq(1, 2, 0.2), "M")),
+    minor_breaks = seq(0, 2e6, 1e5)) +
   theme_minimal()
 ```
 
@@ -196,9 +198,10 @@ anim <- ggplot(data, aes(rank)) +                                          # <<<
   expand_limits(y = -200000) +
   labs(x = NULL, y = NULL, title = "Covid-19 potvrzené případy", 
        subtitle = "datum: {frame_time}") +                                 # <<<<<<<<<<<
-  scale_y_continuous(breaks = seq(0, 1e6, 2e5),
-                     labels = c("0", paste0(seq(200, 800, 200), "k"), "1M"),
-                     minor_breaks = seq(0, 2e6, 1e5)) +
+  scale_y_continuous(
+    breaks = seq(0, 2e6, 2e5),
+    labels = c("0", paste0(seq(200, 800, 200), "k"), paste0(seq(1, 2, 0.2), "M")),
+    minor_breaks = seq(0, 2e6, 1e5)) +
   transition_time(date) +                                                  # <<<<<<<<<<<
   theme_minimal()
 ```
