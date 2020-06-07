@@ -3,7 +3,6 @@ title: "Animace v ggplot2"
 author: author
 post_date: 2020-05-13
 layout: post
-# categories: cat
 output: jekyllthat::jekylldown
 excerpt_separator: <!--more-->
 excerpt_image: "gganimate-covid/animate-1.gif"
@@ -47,7 +46,7 @@ nebudeme.
 covid <- read_csv("https://covid.ourworldindata.org/data/owid-covid-data.csv")
 ```
 
-Z dat je potřeba nejprve odstranit souhrnná data za celý svět. Pro naší
+Z dat je potřeba nejprve odstranit souhrnná data za celý svět. Pro naši
 vizualizaci vezmeme pouze data od začátku března. Pro každý den nám
 stačí informace o 15 státech s největším počtem potvrzených případů.
 Proto si zvlášť pro každý den jednotlivé státy očíslujeme a necháme si
@@ -79,9 +78,9 @@ Vytvořená data (prvních několik řádků) vypadá takto.
 ## Statický graf
 
 Jak bylo zmíněno v úvodu, přechod z grafu do animace se dá zvládnout
-jediným příkazem. Začneme proto přípravou statického grafu do výsledné
-podoby. Ten poté jednoduše převedeme do animace. Pro statický graf nám
-postačí data pro jeden den.
+jediným příkazem. Začneme proto přípravou statického grafu do
+požadovaného formátu. Ten poté jednoduše převedeme do animace. Pro
+statický graf nám postačí data pro jeden den.
 
 ``` r
 selected_date <- as.Date("2020-04-30")
@@ -123,14 +122,15 @@ byl na hodnotě 0. Pro lepší čitelnost můžeme odsadit o jednu mezeru.
 Název státu odstraníme z legendy pomocí `guide=F` u obou parametrů
 barvy. Při vykreslování grafu `ggplot` ignoruje velikost textu a je
 možné, že se text nevejde do obrázku. V tomto případě je nejjednodušší
-ručně rozšířit oblast grafu o předem zvolenou hodnotu.
+ručně rozšířit oblast grafu o předem zvolenou hodnotu pomocí vrstvy
+`expand_limits()`.
 
 ``` r
-p <- p + 
+p <- p +
   geom_text(aes(y = 0, label = paste0(location, " "), color = location), hjust = 'right') +
   scale_fill_discrete(guide = F) +
   scale_color_discrete(guide = F) +
-  expand_limits(y = -200000)
+  expand_limits(y = -270000)
 plot(p)
 ```
 
@@ -145,7 +145,7 @@ vzhled. Motiv si snadno změníte pomocí některé z vrstev `theme_*`.
 
 ``` r
 p <- p +
-  labs(x = NULL, y = NULL, title = "Covid-19 potvrzené případy", 
+  labs(x = NULL, y = NULL, title = "Covid-19 potvrzené případy",
        subtitle = paste("datum:", selected_date)) +
   scale_y_continuous(
     breaks = seq(0, 2e6, 2e5),
@@ -155,8 +155,9 @@ p <- p +
 plot(p)
 ```
 
-![](/assets/gganimate-covid/labels-1.png)<!-- --> Graf je samozřejmě
-možné vytvořit jednou posloupností příkazů.
+![](/assets/gganimate-covid/labels-1.png)<!-- -->
+
+Graf je samozřejmě možné vytvořit jednou posloupností příkazů.
 
 ``` r
 p <- ggplot(data_day, aes(rank)) +
@@ -166,8 +167,8 @@ p <- ggplot(data_day, aes(rank)) +
   geom_text(aes(y = 0, label = paste0(location, " "), color = location), hjust = 'right') +
   scale_fill_discrete(guide = F) +
   scale_color_discrete(guide = F) +
-  expand_limits(y = -200000) +
-  labs(x = NULL, y = NULL, title = "Covid-19 potvrzené případy", 
+  expand_limits(y = -250000) +
+  labs(x = NULL, y = NULL, title = "Covid-19 potvrzené případy",
        subtitle = paste("datum:", selected_date)) +
   scale_y_continuous(
     breaks = seq(0, 2e6, 2e5),
@@ -195,8 +196,8 @@ anim <- ggplot(data, aes(rank)) +                                          # <<<
   geom_text(aes(y = 0, label = paste0(location, " "), color = location), hjust = 'right') +
   scale_fill_discrete(guide = F) +
   scale_color_discrete(guide = F) +
-  expand_limits(y = -200000) +
-  labs(x = NULL, y = NULL, title = "Covid-19 potvrzené případy", 
+  expand_limits(y = -300000) +
+  labs(x = NULL, y = NULL, title = "Covid-19 potvrzené případy",
        subtitle = "datum: {frame_time}") +                                 # <<<<<<<<<<<
   scale_y_continuous(
     breaks = seq(0, 2e6, 2e5),
@@ -209,7 +210,7 @@ anim <- ggplot(data, aes(rank)) +                                          # <<<
 Animaci již zbývá pouze vykreslit. Takto si ji můžeme jednoduše
 zobrazit. Parametr `nframes` určuje rychlost animace - čím více snímků,
 tím pomalejší a delší animace bude. Aby animace neskončila hned za
-poslením datem, je možné si ji chvíli pozdržet.
+posledním datem, je možné si ji chvíli pozdržet parametrem `end_pause`.
 
 ``` r
 animate(anim, nframes = 500, end_pause = 25)
@@ -219,7 +220,9 @@ animate(anim, nframes = 500, end_pause = 25)
 
 Alternativně je možné animace rovnou uložit do souboru ve formátu gif,
 mp4 a spousty
-    dalších.
+dalších.
 
-    animate(anim, nframes = 500, end_pause = 25, renderer = gifski_renderer("covid.gif"))
-    animate(anim, nframes = 500, end_pause = 25, renderer = av_renderer("covid.mp4"))
+``` r
+animate(anim, nframes = 500, end_pause = 25, renderer = gifski_renderer("covid.gif"))
+animate(anim, nframes = 500, end_pause = 25, renderer = av_renderer("covid.mp4"))
+```

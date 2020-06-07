@@ -3,7 +3,6 @@ title: "Animace v ggplot2"
 author: author
 post_date: 2020-05-13
 layout: post
-# categories: cat
 output: jekyllthat::jekylldown
 excerpt_separator: <!--more-->
 excerpt_image: "gganimate-covid/animate-1.gif"
@@ -36,7 +35,7 @@ Jako zdroj dat použijeme organizaci [Our World in Data](https://ourworldindata.
 covid <- read_csv("https://covid.ourworldindata.org/data/owid-covid-data.csv")
 ```
 
-Z dat je potřeba nejprve odstranit souhrnná data za celý svět. Pro naší vizualizaci vezmeme pouze data od začátku března. Pro každý den nám stačí informace o 15 státech s největším počtem potvrzených případů. Proto si zvlášť pro každý den jednotlivé státy očíslujeme a necháme si pouze prvních 15. Dále si můžeme nechat pouze ty sloupečky, které skutečně potřebujeme.
+Z dat je potřeba nejprve odstranit souhrnná data za celý svět. Pro naši vizualizaci vezmeme pouze data od začátku března. Pro každý den nám stačí informace o 15 státech s největším počtem potvrzených případů. Proto si zvlášť pro každý den jednotlivé státy očíslujeme a necháme si pouze prvních 15. Dále si můžeme nechat pouze ty sloupečky, které skutečně potřebujeme.
 
 ```{r prepare-data}
 num_countries <- 15
@@ -52,14 +51,14 @@ data <- covid %>%
 Vytvořená data (prvních několik řádků) vypadá takto.
 
 ```{r kable-data, echo=FALSE}
-data %>% 
-  head() %>% 
+data %>%
+  head() %>%
   knitr::kable()
 ```
 
 ## Statický graf
 
-Jak bylo zmíněno v úvodu, přechod z grafu do animace se dá zvládnout jediným příkazem. Začneme proto přípravou statického grafu do výsledné podoby. Ten poté jednoduše převedeme do animace. Pro statický graf nám postačí data pro jeden den.
+Jak bylo zmíněno v úvodu, přechod z grafu do animace se dá zvládnout jediným příkazem. Začneme proto přípravou statického grafu do požadovaného formátu. Ten poté jednoduše převedeme do animace. Pro statický graf nám postačí data pro jeden den.
 
 ```{r single-day-data}
 selected_date <- as.Date("2020-04-30")
@@ -83,14 +82,14 @@ p <- p +
 plot(p)
 ```
 
-Název státu nechceme mít v legendě, ale přímo v grafu - i text bude pohyblivý. Ten nastavíme tak, aby pravý okraj textu (`hjust='right'`) byl na hodnotě 0. Pro lepší čitelnost můžeme odsadit o jednu mezeru. Název státu odstraníme z legendy pomocí `guide=F` u obou parametrů barvy. Při vykreslování grafu `ggplot` ignoruje velikost textu a je možné, že se text nevejde do obrázku. V tomto případě je nejjednodušší ručně rozšířit oblast grafu o předem zvolenou hodnotu.
+Název státu nechceme mít v legendě, ale přímo v grafu - i text bude pohyblivý. Ten nastavíme tak, aby pravý okraj textu (`hjust='right'`) byl na hodnotě 0. Pro lepší čitelnost můžeme odsadit o jednu mezeru. Název státu odstraníme z legendy pomocí `guide=F` u obou parametrů barvy. Při vykreslování grafu `ggplot` ignoruje velikost textu a je možné, že se text nevejde do obrázku. V tomto případě je nejjednodušší ručně rozšířit oblast grafu o předem zvolenou hodnotu pomocí vrstvy `expand_limits()`.
 
 ```{r locations}
-p <- p + 
+p <- p +
   geom_text(aes(y = 0, label = paste0(location, " "), color = location), hjust = 'right') +
   scale_fill_discrete(guide = F) +
   scale_color_discrete(guide = F) +
-  expand_limits(y = -200000)
+  expand_limits(y = -270000)
 plot(p)
 ```
 
@@ -98,7 +97,7 @@ Poslední úpravy provedeme na popiskách grafu. Názvy os odstraníme a přidá
 
 ```{r labels}
 p <- p +
-  labs(x = NULL, y = NULL, title = "Covid-19 potvrzené případy", 
+  labs(x = NULL, y = NULL, title = "Covid-19 potvrzené případy",
        subtitle = paste("datum:", selected_date)) +
   scale_y_continuous(
     breaks = seq(0, 2e6, 2e5),
@@ -107,6 +106,7 @@ p <- p +
   theme_minimal()
 plot(p)
 ```
+
 Graf je samozřejmě možné vytvořit jednou posloupností příkazů.
 
 ```{r full-plot}
@@ -117,8 +117,8 @@ p <- ggplot(data_day, aes(rank)) +
   geom_text(aes(y = 0, label = paste0(location, " "), color = location), hjust = 'right') +
   scale_fill_discrete(guide = F) +
   scale_color_discrete(guide = F) +
-  expand_limits(y = -200000) +
-  labs(x = NULL, y = NULL, title = "Covid-19 potvrzené případy", 
+  expand_limits(y = -250000) +
+  labs(x = NULL, y = NULL, title = "Covid-19 potvrzené případy",
        subtitle = paste("datum:", selected_date)) +
   scale_y_continuous(
     breaks = seq(0, 2e6, 2e5),
@@ -139,8 +139,8 @@ anim <- ggplot(data, aes(rank)) +                                          # <<<
   geom_text(aes(y = 0, label = paste0(location, " "), color = location), hjust = 'right') +
   scale_fill_discrete(guide = F) +
   scale_color_discrete(guide = F) +
-  expand_limits(y = -200000) +
-  labs(x = NULL, y = NULL, title = "Covid-19 potvrzené případy", 
+  expand_limits(y = -300000) +
+  labs(x = NULL, y = NULL, title = "Covid-19 potvrzené případy",
        subtitle = "datum: {frame_time}") +                                 # <<<<<<<<<<<
   scale_y_continuous(
     breaks = seq(0, 2e6, 2e5),
@@ -150,15 +150,15 @@ anim <- ggplot(data, aes(rank)) +                                          # <<<
   theme_minimal()
 ```
 
-Animaci již zbývá pouze vykreslit. Takto si ji můžeme jednoduše zobrazit. Parametr `nframes` určuje rychlost animace - čím více snímků, tím pomalejší a delší animace bude. Aby animace neskončila hned za poslením datem, je možné si ji chvíli pozdržet.
+Animaci již zbývá pouze vykreslit. Takto si ji můžeme jednoduše zobrazit. Parametr `nframes` určuje rychlost animace - čím více snímků, tím pomalejší a delší animace bude. Aby animace neskončila hned za posledním datem, je možné si ji chvíli pozdržet parametrem `end_pause`.
 
-```{r animate}
+```{r animate, eval=T}
 animate(anim, nframes = 500, end_pause = 25)
 ```
 
 Alternativně je možné animace rovnou uložit do souboru ve formátu gif, mp4 a spousty dalších.
 
-```
+```{r, eval=F}
 animate(anim, nframes = 500, end_pause = 25, renderer = gifski_renderer("covid.gif"))
 animate(anim, nframes = 500, end_pause = 25, renderer = av_renderer("covid.mp4"))
 ```
