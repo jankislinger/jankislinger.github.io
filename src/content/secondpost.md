@@ -1,10 +1,10 @@
 ---
-title: "My first post"
-author: "Jan Kislinger"
-date: "Auugst 28, 2020"
+title: My second post
+author: Jan Kislinger
+date: Auugst 29, 2020
 ---
 
-# Welcome to my blog
+# Second post
 
 * foo
 * foo

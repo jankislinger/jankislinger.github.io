@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter, Route, Switch} from "react-router-dom"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import {Header} from './components/headerComponent/header'
+
+import './App.css';
+import BlogIndex from "./components/pages/blogIndex"
+import BlogPost from "./components/pages/blogPost"
+import {HomePage} from "./components/pages/homePage"
+
+
+class App extends React.Component {
+  title = "About Us"
+  breadcrumbs = [
+    {href: "#", text: "Home"},
+    {href: "", text: "Pages"},
+  ]
+
+  render() {
+    return (
+      <BrowserRouter>
+        <div className="body">
+          <Header/>
+          <div role="main" className="main">
+            <Switch>
+              <Route exact path="/" component={HomePage}/>
+              <Route exact path="/blog" component={BlogIndex}/>
+              <Route path="/blog/:postKey" children={<BlogPost/>}/>
+              <Route><h1>404</h1></Route>
+            </Switch>
+          </div>
+        </div>
+      </BrowserRouter>
+    )
+  }
 }
 
-export default App;
+export default App
