@@ -24,6 +24,6 @@ V případě zájmu je možné základy doplnit o některá z následujících t
 * Web scraping
 * ... a mnoho dalšího
 
-Cena se pohybuje v rozmezí 5000--7000 za 4hodinový kurz dle konkrétního obsahu kurzu. Standardně probíhají dva až tři 
-kurzy v rámci jednoho školení. V případě zájmu o více informací, či konkrétní cenovou nabídku mě prosím kontaktujte přes
-email.
+Cena se pohybuje v rozmezí 1500--2000 za hodinu kurzu dle konkrétního obsahu kurzu. Standardní délka školení jsou dva
+dny, ale je samozřejmě možné se domluvit na delších kurzech. V případě zájmu o více informací, či konkrétní cenovou
+nabídku mě prosím kontaktujte na email.
