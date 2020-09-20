@@ -7,6 +7,7 @@ import './App.css';
 import BlogIndex from "./components/pages/blogIndex"
 import BlogPost from "./components/pages/blogPost"
 import {HomePage} from "./components/pages/homePage"
+import {Companies} from "./components/pages/companies";
 
 
 class App extends React.Component {
@@ -24,6 +25,7 @@ class App extends React.Component {
           <div role="main" className="main">
             <Switch>
               <Route exact path="/" component={HomePage}/>
+              <Route exact path="/firemni-skoleni" component={Companies}/>
               <Route exact path="/blog" component={BlogIndex}/>
               <Route path="/blog/:postKey" children={<BlogPost/>}/>
               <Route><h1>404</h1></Route>

@@ -128,8 +128,20 @@ export function HeaderNav() {
                   Úvod
                 </NavLink>
 
-                <NavLink to="/blog">
-                  Pro firmy
+                <NavLink to="/firemni-skoleni">
+                  Firemní školení
+                </NavLink>
+
+                <NavLink to="/skolni-kurzy">
+                  Školní kurzy
+                </NavLink>
+
+                <NavLink to="/kurzy-pro-verejnost">
+                  Kurzy pro veřejnost
+                </NavLink>
+
+                <NavLink to="/individualni-kurzy">
+                  Individuální
                 </NavLink>
 
                 <NavLink to="/blog">
