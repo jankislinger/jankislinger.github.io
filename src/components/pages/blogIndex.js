@@ -14,6 +14,7 @@ function BlogIndex() {
     loading: true,
     posts: [],
   });
+  document.title = "Blog | Kurzy R | Jan Kislinger"
 
   useEffect(() => {
     setState({loading: true, posts: []})
@@ -76,13 +77,12 @@ function BlogPostPreview({postData}) {
         <div className="post-meta">
           <span>
             <i className="far fa-user"/>
-            By <a href="#">{postData.author}</a>
+            <span className="text-color-primary">{postData.author}</span>
           </span>
           <span>
             <i className="far fa-folder"/>
-            {postData.tags.map((tag, i) => <>{i > 0 && ", "}<a href="#">{tag}</a></>)}
+            {postData.tags.map((tag, i) => <>{i > 0 && ", "}<span className="text-color-primary">{tag}</span></>)}
           </span>
-          <span><i className="far fa-comments"/> <a href="#">{postData.numComments} Comments</a></span>
           <span className="d-block d-sm-inline-block float-sm-right mt-3 mt-sm-0">
             <a href={postUrl} className="btn btn-xs btn-light text-1 text-uppercase">
               Celý článek

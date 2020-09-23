@@ -53,23 +53,12 @@ function BlogPost() {
             <div className="blog-posts single-post">
 
               <article className="post post-large blog-single-post border-0 m-0 p-0">
-                {/*<div className="post-image ml-0 text-center">*/}
-                {/*  <a href="blog-post.html">*/}
-                {/*    <img src={`${API_URL}/post/${postKey}/images/${metadata.imageUrl}`} className="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt=""/>*/}
-                {/*  </a>*/}
-                {/*</div>*/}
-
-                {/*<div className="post-date ml-0">*/}
-                {/*  <span className="day">10</span>*/}
-                {/*  <span className="month">Jan</span>*/}
-                {/*</div>*/}
 
                 <div className="post-date ml-0">
                   <span className="day">{date.getDate()}</span>
                   <span className="month">{monthNames[date.getMonth()]}</span>
                   <span className="year">{date.getFullYear()}</span>
                 </div>
-
 
                 <div className="post-content ml-0">
 
@@ -79,31 +68,30 @@ function BlogPost() {
                     </Link>
                   </h2>
 
-                  {/*<div className="post-meta">*/}
-                  {/*  <span><i className="far fa-user"/> By <a href="#">John Doe</a> </span>*/}
-                  {/*  <span><i className="far fa-folder"/> <a href="#">Lifestyle</a>, <a href="#">Design</a> </span>*/}
-                  {/*  <span><i className="far fa-comments"/> <a href="#">12 Comments</a></span>*/}
-                  {/*</div>*/}
-
                   <div className="post-meta">
                     <span>
                       <i className="far fa-user"/>
-                      By <a href="#">{metadata.author}</a>
+                      <a href="#">{metadata.author}</a>
                     </span>
                     <span>
                       <i className="far fa-folder"/>
-                      {metadata.tags.map((tag, i) => <>{i > 0 && ", "}<a href="#">{tag}</a></>)}
+                      {metadata.tags.map((tag, i) => <>{i > 0 && ", "}<span className="text-color-primary">{tag}</span></>)}
                     </span>
-                    <span><i className="far fa-comments"/>
-                      <a href="#">{metadata.numComments} Comments
-                    </a></span>
                     <span className="d-block d-sm-inline-block float-sm-right mt-3 mt-sm-0">
                     </span>
                   </div>
 
-
-                  <ReactMarkdown source={markdown}/>
-
+                  <div className="post mt-5">
+                    <ReactMarkdown source={markdown}
+                    renderers={{
+                      table: ({children}) => {
+                        return <table className="table table-striped table-hover">{children}</table>
+                      },
+                      link: ({href, children}) => {
+                        return <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>
+                      }
+                    }}/>
+                  </div>
 
                 </div>
               </article>
@@ -115,7 +103,6 @@ function BlogPost() {
       <RowWhoWeAre/>
     </>
   )
-
 }
 
 
