@@ -1,9 +1,12 @@
 import React from "react"
 import {headerClass, rowClass, sectionClass, Topic} from "./sectionsTopics"
 import {PageHeaderCommon} from "../pageHeader"
+import {TITLE} from "../constants";
 
 
 export function CoursesCompanies() {
+  document.title = `Firemní školení | ${TITLE}`
+
   return (
     <div role="main" className="main">
       <PageHeaderCommon/>

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react"
 import {PageHeader} from "../PageHeader"
 import {Link} from "react-router-dom"
-import {API_URL, monthNames} from "../constants"
+import {API_URL, monthNames, TITLE} from "../constants"
 
 function BlogIndex() {
   const title = "Blog"
@@ -14,7 +14,7 @@ function BlogIndex() {
     loading: true,
     posts: [],
   });
-  document.title = "Blog | Kurzy R | Jan Kislinger"
+  document.title = `Blog | ${TITLE}`
 
   useEffect(() => {
     setState({loading: true, posts: []})
@@ -52,7 +52,8 @@ function BlogPostPreview({postData}) {
     <article className="post post-large">
       <div className="post-image">
         <Link to={postUrl}>
-          <img src={postData.imageUrl} className="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt=""/>
+          <img src={postData.imageUrl} className="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0"
+               alt=""/>
         </Link>
       </div>
 
@@ -81,7 +82,8 @@ function BlogPostPreview({postData}) {
           </span>
           <span>
             <i className="far fa-folder"/>
-            {postData.tags.map((tag, i) => <>{i > 0 && ", "}<span className="text-color-primary">{tag}</span></>)}
+            {postData.tags.map((tag, i) => <>{i > 0 && ", "}<span
+              className="text-color-primary">{tag}</span></>)}
           </span>
           <span className="d-block d-sm-inline-block float-sm-right mt-3 mt-sm-0">
             <a href={postUrl} className="btn btn-xs btn-light text-1 text-uppercase">

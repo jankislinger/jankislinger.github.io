@@ -1,6 +1,8 @@
 import React from "react"
+import {TITLE} from "../constants";
 
 export function HomePage() {
+  document.title = TITLE
 
   return (
     <div role="main" className="main">
@@ -9,7 +11,7 @@ export function HomePage() {
       <SectionIntroduction/>
       <SectionTypesTutoring/>
       <SectionAboutTutor/>
-      <SectionLibraries/>
+      {/*<SectionLibraries/>*/}
 
 
     </div>

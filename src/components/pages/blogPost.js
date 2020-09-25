@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react"
 import ReactMarkdown from "react-markdown"
 import {Link, useParams} from "react-router-dom"
 import {PageHeader} from "../PageHeader"
-import {API_URL, monthNames} from "../constants"
+import {API_URL, monthNames, TITLE} from "../constants"
 
 
 function BlogPost() {
@@ -14,6 +14,7 @@ function BlogPost() {
   const [metadata, setMetadata] = useState(null);
   const [markdown, setMarkdown] = useState(null);
 
+  document.title = `Blog | ${TITLE}`
 
   useEffect(() => {
     fetch(`${API_URL}/post/${postKey}/metadata.json`)
@@ -75,7 +76,8 @@ function BlogPost() {
                     </span>
                     <span>
                       <i className="far fa-folder"/>
-                      {metadata.tags.map((tag, i) => <>{i > 0 && ", "}<span className="text-color-primary">{tag}</span></>)}
+                      {metadata.tags.map((tag, i) => <>{i > 0 && ", "}<span
+                        className="text-color-primary">{tag}</span></>)}
                     </span>
                     <span className="d-block d-sm-inline-block float-sm-right mt-3 mt-sm-0">
                     </span>
@@ -83,14 +85,16 @@ function BlogPost() {
 
                   <div className="post mt-5">
                     <ReactMarkdown source={markdown}
-                    renderers={{
-                      table: ({children}) => {
-                        return <table className="table table-striped table-hover">{children}</table>
-                      },
-                      link: ({href, children}) => {
-                        return <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>
-                      }
-                    }}/>
+                                   renderers={{
+                                     table: ({children}) => {
+                                       return <table
+                                         className="table table-striped table-hover">{children}</table>
+                                     },
+                                     link: ({href, children}) => {
+                                       return <a href={href} target="_blank"
+                                                 rel="noopener noreferrer">{children}</a>
+                                     }
+                                   }}/>
                   </div>
 
                 </div>

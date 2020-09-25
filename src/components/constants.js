@@ -3,6 +3,7 @@ const BRANCH = "init"
 
 export const API_URL = `${API_BASE}/${BRANCH}/api`
 
+export const TITLE = "Kurzy R | Jan Kislinger"
 
 // const monthNames = ["January", "February", "March", "April", "May", "June",
 //   "July", "August", "September", "October", "November", "December"
