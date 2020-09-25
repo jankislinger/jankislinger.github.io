@@ -1,0 +1,15 @@
+/* Add here all your CSS customizations */
+i.fa {
+    font-family: fontawesome !important;
+}
+
+.post pre {
+    padding: 9px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.post img {
+    max-width: 100%;
+}
