@@ -23,15 +23,18 @@ function SectionIndividualIntro() {
     <section className="section bg-color-white m-0 border-0">
       <div className="container">
         <div className="row pb-4 mt-2">
-          <h1>
-            Individuální výuka
-          </h1>
-          <p className="text-4">
-            Doučuji studenty pro přípravu na zkoušku z matematiky, statistiky nebo statistického jazyka R. Dále pomáhám
-            se zpracováním a vyhodnocováním bakalářských a diplomových prací. Cena pro studenty je <strong>600 Kč /
-            hodinu</strong>. Tato nabídka platí pouze pro studenty a v rozsahu kolem 10 hodin, což je typická doba pro
-            práci s daty u jedné diplomové práce.
-          </p>
+          <div className="col">
+            <h1>
+              Individuální výuka
+            </h1>
+            <p className="text-4">
+              Doučuji studenty pro přípravu na zkoušku z matematiky, statistiky nebo statistického jazyka R. Dále
+              pomáhám
+              se zpracováním a vyhodnocováním bakalářských a diplomových prací. Cena pro studenty je <strong>600 Kč /
+              hodinu</strong>. Tato nabídka platí pouze pro studenty a v rozsahu kolem 10 hodin, což je typická doba pro
+              práci s daty u jedné diplomové práce.
+            </p>
+          </div>
         </div>
       </div>
     </section>

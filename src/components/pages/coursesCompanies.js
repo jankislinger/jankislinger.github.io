@@ -24,12 +24,14 @@ function SectionCompanyIntro() {
     <section className="section bg-color-white m-0 border-0">
       <div className="container">
         <div className="row pb-4 mt-2">
-          <h1>Firemní školení</h1>
-          <p className="text-4">
-            Obsah školení je možné sestavit přesně podle Vašich potřeb s ohledem na zkušenosti a znalosti účastníků.
-            Kurz je možné libovolně poskládat z nabízených témat podle potřeb. Školení je možné uskutčnit praktickou
-            formou (do 10 osob), nebo formou prezentace. Pro více informací a cenovou nabídku mě prosím kontaktujte.
-          </p>
+          <div className="col">
+            <h1>Firemní školení</h1>
+            <p className="text-4">
+              Obsah školení je možné sestavit přesně podle Vašich potřeb s ohledem na zkušenosti a znalosti účastníků.
+              Kurz je možné libovolně poskládat z nabízených témat podle potřeb. Školení je možné uskutčnit praktickou
+              formou (do 10 osob), nebo formou prezentace. Pro více informací a cenovou nabídku mě prosím kontaktujte.
+            </p>
+          </div>
         </div>
       </div>
     </section>

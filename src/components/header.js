@@ -85,7 +85,7 @@ function HeaderNav() {
 function NavLink({to, children, exactMatch}) {
   const active = useRouteMatch({path: to, exact: !!exactMatch})
   return (
-    <li className="nav-item">
+    <li className="nav-item" data-toggle="collapse" data-target=".header-nav-main nav">
       <Link className={`dropdown-item ${active ? "active" : ""}`} to={to}>
         {children}
       </Link>

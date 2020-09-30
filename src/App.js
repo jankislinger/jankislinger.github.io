@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch} from "react-router-dom"
+import {HashRouter, Route, Switch} from "react-router-dom"
 
 import {Header} from './components/header'
 
@@ -23,7 +23,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter basename="/">
         <div className="body">
           <Header/>
           <div role="main" className="main">
@@ -35,12 +35,15 @@ class App extends React.Component {
               <Route exact path="/individualni-kurzy" component={CoursesIndividual}/>
               <Route exact path="/blog" component={BlogIndex}/>
               <Route path="/blog/:postKey" children={<BlogPost/>}/>
+              <Route exact path={`/home`}
+                     render={(routerProps) => <HomePage routerProps={routerProps} setUpGame={this.setUpGame}/>}/>
+
               <Route><h1>404</h1></Route>
             </Switch>
           </div>
         </div>
         <Footer/>
-      </BrowserRouter>
+      </HashRouter>
     )
   }
 }

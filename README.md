@@ -66,3 +66,14 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+```
+https://www.r-graph-gallery.com/294-basic-ridgeline-plot.html#color
+https://www.r-graph-gallery.com/how-to-draw-connecting-routes-on-map-with-r-and-great-circles.html
+https://www.r-graph-gallery.com/50-51-52-scatter-plot-with-ggplot2.html
+https://www.r-graph-gallery.com/histogram_several_group.html
+https://www.r-graph-gallery.com/277-marginal-histogram-for-ggplot2.html
+https://www.r-graph-gallery.com/histogram_several_group.html
+https://www.r-graph-gallery.com/2-two-histograms-with-melt-colors.html
+```
