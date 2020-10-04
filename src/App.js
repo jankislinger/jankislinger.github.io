@@ -11,7 +11,9 @@ import {CoursesCompanies} from "./components/pages/coursesCompanies";
 import {CoursesIndividual} from "./components/pages/coursesIndividual"
 import {CoursesUniversity} from "./components/pages/coursesUniversity"
 import {CoursesPublic} from "./components/pages/coursesPublic"
-import {Footer} from "./components/footer"
+import {CourseRegistration} from "./components/pages/courseRegistration";
+
+// import {Footer} from "./components/footer"
 
 
 class App extends React.Component {
@@ -29,10 +31,14 @@ class App extends React.Component {
           <div role="main" className="main">
             <Switch>
               <Route exact path="/" component={HomePage}/>
+
               <Route exact path="/firemni-skoleni" component={CoursesCompanies}/>
               <Route exact path="/skolni-kurzy" component={CoursesUniversity}/>
               <Route exact path="/kurzy-pro-verejnost" component={CoursesPublic}/>
               <Route exact path="/individualni-kurzy" component={CoursesIndividual}/>
+
+              <Route exact path="/registrace" component={CourseRegistration}/>
+
               <Route exact path="/blog" component={BlogIndex}/>
               <Route path="/blog/:postKey" children={<BlogPost/>}/>
               <Route exact path={`/home`}
