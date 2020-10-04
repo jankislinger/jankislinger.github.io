@@ -1,6 +1,16 @@
-import React from "react"
+import React, {useEffect, useRef, useState} from "react"
+import {Link} from "react-router-dom"
 import {PageHeaderCommon} from "../pageHeader"
 import {TITLE} from "../constants";
+import emailjs from 'emailjs-com';
+
+import 'emailjs-com';
+
+
+const userID = "user_f4Lq5nkwdpz1oNeEg6mhw"
+const serviceID = "service_vhkkh3j"
+const templateID = "template_ah7bx9m"
+emailjs.init(userID)
 
 
 export function CourseRegistration() {
@@ -17,51 +27,85 @@ export function CourseRegistration() {
 }
 
 function SectionRegistrationForm() {
-  let i = 1
+  const [success, setSuccess] = useState(false)
+  const [errorMsg, setErrorMsg] = useState(null)
+  const ref = useRef(null)
 
   function submitForm(event) {
     event.preventDefault()
-    i += 1
-    console.log(i)
+    window.scrollTo(0, ref.current.offsetTop)
+
+    const data = {
+      name: event.target.name.value,
+      email: event.target.email.value,
+      course: event.target.course.value,
+      date: event.target.date.value,
+      message: event.target.message.value,
+    }
+
+    emailjs.send(serviceID, templateID, data)
+      .then(response => {
+        setSuccess(true)
+        setErrorMsg(null)
+        document.getElementById("inputName").value = ""
+        document.getElementById("inputEmail").value = ""
+        document.getElementById("inputMessage").value = ""
+      })
+      .catch(error => {
+        setSuccess(false)
+        setErrorMsg(error)
+      })
   }
 
+  useEffect(() => {
+    window.scrollTo(0, ref.current.offsetTop)
+  })
+
+
   return (
-    <section className="section bg-color-white m-0 border-0">
+    <section className="section bg-color-white m-0 border-0" ref={ref}>
       <div className="container">
         <div className="row pb-4 mt-2 justify-content-md-center">
           <div className="col-md-8">
 
             <div className="overflow-hidden mb-1">
               <h2 className="font-weight-normal text-7 mb-0"><strong
-                className="font-weight-extra-bold">Contact</strong> Us</h2>
+                className="font-weight-extra-bold">Přihláška</strong> ke kurzu</h2>
             </div>
             <div className="overflow-hidden mb-4 pb-3">
-              <p className="mb-0">Feel free to ask for details, don't save any questions!</p>
+              <p className="mb-0">
+                Odesíláte nezávaznou přihlášku ku kurzu. Příhláška bude kompletní až po zaplacení zálohy nebo celé
+                částky. Informace o platbě obdržíte e-mailem po přihlášení.
+              </p>
             </div>
 
-            <form className="contact-form" onSubmit={submitForm} noValidate="true">
-              <div className="contact-form-success alert alert-success d-none mt-4">
-                <strong>Success!</strong> Your message has been sent to us.
+            <form className="contact-form" onSubmit={submitForm}>
+              {success &&
+              <div className="contact-form-success alert alert-success mt-4">
+                Přihláška byla úspěšně odeslána. Přejít zpět na <Link to="/kurzy-pro-verejnost">seznam kurzů</Link>.
               </div>
-
-              <div className="contact-form-error alert alert-danger d-none mt-4">
-                <strong>Error!</strong> There was an error sending your message.
+              }
+              {errorMsg !== null &&
+              <div className="contact-form-error alert alert-danger mt-4">
+                Během odesílání přihlášky došlo k chybě. Kontaktujte mě prosím na <a
+                href="mailto:jan.kislinger@gmail.com">jan.kislinger@gmail.com</a>.
                 <span className="mail-error-message text-1 d-block"/>
               </div>
+              }
 
               <div className="form-row">
                 <div className="form-group col">
-                  <label className="font-weight-bold text-dark text-2">Jmeno *</label>
-                  <input type="text" value="" data-msg-required="Please enter the subject." maxLength="100"
-                         className="form-control" name="subject" required="false"/>
+                  <label className="required font-weight-bold text-dark text-2">Jméno</label>
+                  <input type="text" data-msg-required="Please enter the subject." maxLength="100"
+                         className="form-control" name="name" id="inputName" required="true"/>
                 </div>
               </div>
 
               <div className="form-row">
                 <div className="form-group col">
-                  <label className="font-weight-bold text-dark text-2">E-mail *</label>
-                  <input type="text" value="" data-msg-required="Please enter the subject." maxLength="100"
-                         className="form-control" name="subject" required="true"/>
+                  <label className="required font-weight-bold text-dark text-2">E-mail</label>
+                  <input type="text" data-msg-required="Please enter the subject." maxLength="100"
+                         className="form-control" name="email" id="inputEmail" required="true"/>
                 </div>
               </div>
 
@@ -70,29 +114,30 @@ function SectionRegistrationForm() {
                   <label className="font-weight-bold text-dark text-2">Kurz</label>
                   <input type="text" value="Úvod do datové analýzy a vizualizace"
                          data-msg-required="Please enter the subject." maxLength="100"
-                         className="form-control" name="subject" disabled="true"/>
+                         className="form-control" name="course" disabled="true"/>
                 </div>
               </div>
 
               <div className="form-row">
                 <div className="form-group col">
-                  <label className="font-weight-bold text-dark text-2">Termin</label>
-                  <input type="text" value="3.10.2020"
+                  <label className="font-weight-bold text-dark text-2">Termín</label>
+                  <input type="text" value="23.11.2020"
                          data-msg-required="Please enter the subject." maxLength="100"
-                         className="form-control" name="subject" disabled="true"/>
+                         className="form-control" name="date" disabled="true"/>
                 </div>
               </div>
 
               <div className="form-row">
                 <div className="form-group col">
-                  <label className="required font-weight-bold text-dark text-2">Poznamky k registraci</label>
-                  <textarea maxLength="5000" data-msg-required="Please enter your message." rows="8"
-                            className="form-control" name="message" required=""/>
+                  <label className="font-weight-bold text-dark text-2">Poznamky k registraci</label>
+                  <textarea maxLength="5000" data-msg-required="Please enter your message." rows="5"
+                            className="form-control" name="message" id="inputMessage"
+                            placeholder="Vaše zkušenosti s R, co od kurzu očekáváte, případné dotazy, ..."/>
                 </div>
               </div>
               <div className="form-row">
                 <div className="form-group col">
-                  <input type="submit" value="Prihlasit ke kurzu" className="btn btn-primary btn-modern"
+                  <input type="submit" value="Přihlásit ke kurzu" className="btn btn-primary btn-modern"
                          data-loading-text="Loading..."/>
                 </div>
               </div>
@@ -103,4 +148,13 @@ function SectionRegistrationForm() {
       </div>
     </section>
   )
+}
+
+function testSend() {
+  return new Promise((resolve, reject) => {
+    setTimeout(function () {
+      var didSucceed = true
+      didSucceed ? resolve(null) : reject('Error');
+    }, 100);
+  })
 }

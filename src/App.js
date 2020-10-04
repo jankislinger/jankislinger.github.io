@@ -1,5 +1,5 @@
 import React from 'react';
-import {HashRouter, Route, Switch} from "react-router-dom"
+import {HashRouter, BrowserRouter, Route, Switch} from "react-router-dom"
 
 import {Header} from './components/header'
 
@@ -12,8 +12,8 @@ import {CoursesIndividual} from "./components/pages/coursesIndividual"
 import {CoursesUniversity} from "./components/pages/coursesUniversity"
 import {CoursesPublic} from "./components/pages/coursesPublic"
 import {CourseRegistration} from "./components/pages/courseRegistration";
-
-// import {Footer} from "./components/footer"
+import {Footer} from "./components/footer"
+import {PATH_COURSE_REGISTRATION} from "./components/constants"
 
 
 class App extends React.Component {
@@ -25,7 +25,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <HashRouter basename="/">
+      <BrowserRouter basename="/">
         <div className="body">
           <Header/>
           <div role="main" className="main">
@@ -37,7 +37,7 @@ class App extends React.Component {
               <Route exact path="/kurzy-pro-verejnost" component={CoursesPublic}/>
               <Route exact path="/individualni-kurzy" component={CoursesIndividual}/>
 
-              <Route exact path="/registrace" component={CourseRegistration}/>
+              <Route exact path={PATH_COURSE_REGISTRATION} component={CourseRegistration}/>
 
               <Route exact path="/blog" component={BlogIndex}/>
               <Route path="/blog/:postKey" children={<BlogPost/>}/>
@@ -49,7 +49,7 @@ class App extends React.Component {
           </div>
         </div>
         <Footer/>
-      </HashRouter>
+      </BrowserRouter>
     )
   }
 }

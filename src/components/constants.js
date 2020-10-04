@@ -14,3 +14,5 @@ export const TITLE = "Kurzy R | Jan Kislinger"
 export const monthNames = [
   "led", "úno", "bře", "dub", "kvě", "čvn", "čvc", "srp", "zář", "říj", "lis", "pro"
 ];
+
+export const PATH_COURSE_REGISTRATION = "/prihlaseni-ke-kurzu"

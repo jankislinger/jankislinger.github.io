@@ -11,8 +11,8 @@ function BlogPost() {
   let {postKey} = useParams()
   const postUrl = `/blog/${postKey}`
 
-  const [metadata, setMetadata] = useState(null);
-  const [markdown, setMarkdown] = useState(null);
+  const [metadata, setMetadata] = useState(null)
+  const [markdown, setMarkdown] = useState(null)
 
   document.title = `Blog | ${TITLE}`
 
