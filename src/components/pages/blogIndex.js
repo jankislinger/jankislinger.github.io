@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react"
 import {PageHeader} from "../PageHeader"
 import {Link} from "react-router-dom"
-import {API_URL, monthNames, TITLE} from "../constants"
+import {API_URL, ASSETS_URL, monthNames, TITLE} from "../constants"
 
 function BlogIndex() {
   const title = "Blog"
   const breadcrumbs = [
-    {href: "/", text: "Home"},
+    {href: "/", text: "Úvod"},
     {href: null, text: title},
   ]
 
@@ -26,7 +26,7 @@ function BlogIndex() {
 
   return (
     <>
-      <PageHeader title={title} breadcrumbs={breadcrumbs}/>
+      <PageHeader breadcrumbs={breadcrumbs}/>
       <div className="container py-4">
         <div className="row">
           <div className="col">
@@ -52,7 +52,7 @@ function BlogPostPreview({postData}) {
     <article className="post post-large">
       <div className="post-image">
         <Link to={postUrl}>
-          <img src={postData.imageUrl} className="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0"
+          <img src={`${API_URL}/post/${postData.key}/images/${postData.imageUrl}`} className="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0"
                alt=""/>
         </Link>
       </div>

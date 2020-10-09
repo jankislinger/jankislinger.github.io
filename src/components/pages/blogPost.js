@@ -36,7 +36,7 @@ function BlogPost() {
   }
 
   const breadcrumbs = [
-    {href: "/", text: "Home"},
+    {href: "/", text: "Úvod"},
     {href: "/blog", text: "Blog"},
     {href: null, text: metadata.title}
   ]
@@ -46,7 +46,7 @@ function BlogPost() {
 
   return (
     <>
-      <PageHeader title={metadata.title} breadcrumbs={breadcrumbs}/>
+      <PageHeader title="Blog" breadcrumbs={breadcrumbs}/>
       <div className="container py-4">
 
         <div className="row">

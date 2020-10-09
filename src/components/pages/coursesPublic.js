@@ -66,7 +66,7 @@ function SectionPublicDates() {
               <tbody>
               <tr>
                 <td>Úvod do datové analýzy a vizualizace</td>
-                <td>3.10.2020</td>
+                <td>23.11.2020</td>
                 <td>Praha 2</td>
                 <td>8 hodin</td>
                 <td>2 400 Kč</td>

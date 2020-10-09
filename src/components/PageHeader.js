@@ -1,4 +1,5 @@
 import React from "react"
+import {Link} from "react-router-dom";
 
 export class PageHeader extends React.Component {
 
@@ -13,13 +14,20 @@ export class PageHeader extends React.Component {
           <div className="row">
 
             <div className="col-md-8 align-self-center p-static order-2 order-md-1">
+              <h1 className="text-dark">{this.props.title}</h1>
             </div>
 
             <div className="col-md-4 align-self-center order-1 order-md-2">
 
               <ul className="breadcrumb d-block text-md-right">
-                <li><a href="#">Home</a></li>
-                <li className="active">Features</li>
+                {
+                  this.props.breadcrumbs.map(x => {
+                    if (x.href === null) {
+                      return (<li className="active">{x.text}</li>)
+                    }
+                    return (<li><Link to={x.href}>{x.text}</Link></li>)
+                  })
+                }
               </ul>
             </div>
           </div>
@@ -97,7 +105,8 @@ export function HeaderWithForm() {
         <div className="container">
           <div className="row justify-content-end">
             <div className="col-lg-6">
-              <div className="slider-contact-form-wrapper bg-primary rounded p-5 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="500">
+              <div className="slider-contact-form-wrapper bg-primary rounded p-5 appear-animation"
+                   data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="500">
                 <div className="row">
                   <div className="col text-center">
                     <h2 className="font-weight-light text-color-light text-8 mb-2">
