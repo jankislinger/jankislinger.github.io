@@ -37,7 +37,7 @@ class App extends React.Component {
               <Route exact path="/kurzy-pro-verejnost" component={CoursesPublic}/>
               <Route exact path="/individualni-kurzy" component={CoursesIndividual}/>
 
-              <Route exact path={PATH_COURSE_REGISTRATION} component={CourseRegistration}/>
+              <Route exact path={`${PATH_COURSE_REGISTRATION}/:date/:key`} component={CourseRegistration}/>
 
               <Route exact path="/blog" component={BlogIndex}/>
               <Route path="/blog/:postKey" children={<BlogPost/>}/>

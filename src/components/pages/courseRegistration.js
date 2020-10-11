@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from "react"
-import {Link} from "react-router-dom"
+import {Link, useParams} from "react-router-dom"
 import {PageHeaderCommon} from "../pageHeader"
 import {TITLE} from "../constants";
 import emailjs from 'emailjs-com';
@@ -15,21 +15,28 @@ emailjs.init(userID)
 
 export function CourseRegistration() {
   document.title = `Registrace | ${TITLE}`
+  const {date, key} = useParams()
+  console.log(date + "|" + key)
 
   return (
     <div role="main" className="main">
       <PageHeaderCommon/>
 
-      <SectionRegistrationForm/>
+      <SectionRegistrationForm dateStr={date} couseKey={key}/>
 
     </div>
   )
 }
 
-function SectionRegistrationForm() {
+function SectionRegistrationForm({dateStr, couseKey}) {
   const [success, setSuccess] = useState(false)
   const [errorMsg, setErrorMsg] = useState(null)
   const ref = useRef(null)
+  const date = new Date(dateStr)
+  let title = courseTitles[couseKey]
+  if (title === undefined) {
+    title = "Kurz nenalezen"
+  }
 
   function submitForm(event) {
     event.preventDefault()
@@ -96,7 +103,7 @@ function SectionRegistrationForm() {
               <div className="form-row">
                 <div className="form-group col">
                   <label className="required font-weight-bold text-dark text-2">Jméno</label>
-                  <input type="text" data-msg-required="Please enter the subject." maxLength="100"
+                  <input type="text" data-msg-required="Please enter the name." maxLength="100"
                          className="form-control" name="name" id="inputName" required="true"/>
                 </div>
               </div>
@@ -104,7 +111,7 @@ function SectionRegistrationForm() {
               <div className="form-row">
                 <div className="form-group col">
                   <label className="required font-weight-bold text-dark text-2">E-mail</label>
-                  <input type="text" data-msg-required="Please enter the subject." maxLength="100"
+                  <input type="text" data-msg-required="Please enter the email." maxLength="100"
                          className="form-control" name="email" id="inputEmail" required="true"/>
                 </div>
               </div>
@@ -112,7 +119,7 @@ function SectionRegistrationForm() {
               <div className="form-row">
                 <div className="form-group col">
                   <label className="font-weight-bold text-dark text-2">Kurz</label>
-                  <input type="text" value="Úvod do datové analýzy a vizualizace"
+                  <input type="text" value={title}
                          data-msg-required="Please enter the subject." maxLength="100"
                          className="form-control" name="course" disabled="true"/>
                 </div>
@@ -121,7 +128,7 @@ function SectionRegistrationForm() {
               <div className="form-row">
                 <div className="form-group col">
                   <label className="font-weight-bold text-dark text-2">Termín</label>
-                  <input type="text" value="23.11.2020"
+                  <input type="text" value={date.toLocaleDateString("cs-CZ")}
                          data-msg-required="Please enter the subject." maxLength="100"
                          className="form-control" name="date" disabled="true"/>
                 </div>
@@ -157,4 +164,10 @@ function testSend() {
       didSucceed ? resolve(null) : reject('Error');
     }, 100);
   })
+}
+
+const courseTitles = {
+  "uvod-do-datove-analyzy-a-vizualizace": "Úvod do datové analýzy a vizualizace",
+  "uvod-do-machine-learningu": "Úvod do machine learningu",
+  "pokrocila-datova-analyza-a-vizualizace": "Pokročilá datová analýza a vizualizace",
 }

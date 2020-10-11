@@ -13,7 +13,6 @@ export function CoursesPublic() {
 
       <SectionPublicIntro/>
       <SectionPublicDates/>
-      <SectionPublicDatesMobile/>
       <SectionCoursesOverview/>
 
     </div>
@@ -44,9 +43,10 @@ function SectionPublicIntro() {
 function SectionPublicDates() {
   const mailTitle = `Přihláška do kurzu: Úvod do datové analýzy a vizualizace`
   const mailBody = `Dobrý den,%0d%0dtímto emailem se nezávazně registruji na uvedený kurz a prosím o podrobnější informace.%0d%0dS pozdravem,`
+  const hideMobile = "d-none d-md-inline-block"
 
   return (
-    <section className="section bg-color-grey-scale-1 m-0 border-0 text-warning d-none d-md-block">
+    <section className="section bg-color-grey-scale-1 m-0 border-0 text-warning">
       <div className="container">
         <div className="row pb-4 mt-2">
           <div className="col">
@@ -58,28 +58,29 @@ function SectionPublicDates() {
               <thead>
               <th>Kurz</th>
               <th>Termín</th>
-              <th>Místo</th>
-              <th>Délka</th>
+              <th className="d-none d-md-table-cell">Místo</th>
+              <th className="d-none d-lg-table-cell">Délka</th>
               <th>Cena</th>
               <th>Přihláška</th>
               </thead>
               <tbody>
-              <tr>
-                <td>Úvod do datové analýzy a vizualizace</td>
-                <td>23.11.2020</td>
-                <td>Praha 2</td>
-                <td>8 hodin</td>
-                <td>2 400 Kč</td>
-                <td className="pl-4">
-                  {/*<a href={`mailto:jan.kislinger@gmail.com?subject=${mailTitle}&body=${mailBody}`}*/}
-                  {/*   target="_blank" rel="noopener noreferrer">*/}
-                  {/*  <i className="fas fa-envelope text-4"/>*/}
-                  {/*</a>*/}
-                  <Link to={PATH_COURSE_REGISTRATION}>
-                    <i className="fas fa-sign-in-alt text-4"/>
-                  </Link>
-                </td>
-              </tr>
+              {activeCourses.map(course => {
+                return (
+                  <tr>
+                    <td>{course.title}</td>
+                    <td>{course.date.toLocaleDateString("cs-CZ")}</td>
+                    <td className="d-none d-md-table-cell">{course.location}</td>
+                    <td className="d-none d-lg-table-cell">{course.duration}</td>
+                    <td>{course.price}</td>
+                    <td className="pl-4">
+                      <Link
+                        to={`${PATH_COURSE_REGISTRATION}/${course.date.toISOString().substring(0, 10)}/${course.key}`}>
+                        <i className="fas fa-sign-in-alt text-4"/>
+                      </Link>
+                    </td>
+                  </tr>
+                )
+              })}
               </tbody>
             </table>
           </div>
@@ -89,42 +90,6 @@ function SectionPublicDates() {
   )
 }
 
-function SectionPublicDatesMobile() {
-  return (
-    <section className="section bg-color-grey-scale-1 m-0 border-0 text-warning d-md-none">
-      <div className="container">
-        <div className="row pb-4 mt-2">
-          <div className="col">
-            <h2>
-              Aktuálně vypsané termíny
-            </h2>
-
-            <table className="table table-striped table-hover text-4">
-              <thead>
-              <th>Kurz</th>
-              <th>Termín Místo</th>
-              <th>Délka Cena</th>
-              <th></th>
-              </thead>
-              <tbody>
-              <tr>
-                <td>Úvod do datové analýzy a vizualizace</td>
-                <td>23.11.2020<br/>Praha&nbsp;2</td>
-                <td>8&nbsp;hodin<br/>2&nbsp;400&nbsp;Kč</td>
-                <td>
-                  <Link to={PATH_COURSE_REGISTRATION}>
-                    <i className="fas fa-sign-in-alt text-4"/>
-                  </Link>
-                </td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
 
 function SectionCoursesOverview() {
   return (
@@ -218,4 +183,39 @@ function SectionCoursesOverview() {
     </section>
   )
 }
+
+const activeCourses = [
+  {
+    title: "Úvod do datové analýzy a vizualizace",
+    key: "uvod-do-datove-analyzy-a-vizualizace",
+    date: new Date("2020-11-23"),
+    location: "Praha",
+    duration: "8 hodin",
+    price: "2400 Kč",
+  },
+  {
+    title: "Úvod do machine learningu",
+    key: "uvod-do-machine-learningu",
+    date: new Date("2020-12-08"),
+    location: "Praha",
+    duration: "8 hodin",
+    price: "2800 Kč",
+  },
+  {
+    title: "Úvod do datové analýzy a vizualizace",
+    key: "uvod-do-datove-analyzy-a-vizualizace",
+    date: new Date("2021-01-25"),
+    location: "Praha",
+    duration: "8 hodin",
+    price: "2400 Kč",
+  },
+  {
+    title: "Pokročilá datová analýza a vizualizace",
+    key: "pokrocila-datova-analyza-a-vizualizace",
+    date: new Date("2021-01-26"),
+    location: "Praha",
+    duration: "8 hodin",
+    price: "2600 Kč",
+  },
+]
 
