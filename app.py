@@ -25,7 +25,7 @@ def index():
     return render_template("index.html", posts=POSTS)
 
 
-@app.route("/blog/bringing-the-carousel-experience-to-recommender-systems")
+@app.route("/blog/bringing-the-carousel-experience-to-recommender-systems/")
 def post_full_page_recommender():
     return render_template("post.html", post=POSTS[0])
 

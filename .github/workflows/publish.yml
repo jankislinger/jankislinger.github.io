@@ -1,0 +1,45 @@
+name: Publish website on push
+on:
+  push:
+    branches: [ master ]
+
+permissions:
+  contents: read
+
+jobs:
+  web-publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Get latest code
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Build static website
+        run: uv run freeze.py
+
+      - name: Install lftp
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lftp
+
+      - name: Upload ./build to FTP
+        env:
+          FTP_USER: ${{ secrets.ftp_username }}
+          FTP_PASS: ${{ secrets.ftp_password }}
+          FTP_HOST: ${{ vars.FTP_HOST }}     # e.g. sftp://example.com or ftps://example.com
+          REMOTE_DIR: ${{ vars.FTP_REMOTE_DIR }}  # remote target dir
+        run: |
+          test -d build || { echo "::error ::build directory not found"; exit 1; }
+          lftp -u "$FTP_USER","$FTP_PASS" "$FTP_HOST" <<EOF
+          set cmd:fail-exit true
+          set net:max-retries 2
+          set net:timeout 30
+          set ssl:verify-certificate no
+          mirror -R --only-newer --continue --delete --verbose=3 --parallel=10 \
+            ./build/ "$REMOTE_DIR"
+          bye
+          EOF
