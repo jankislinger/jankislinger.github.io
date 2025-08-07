@@ -7,7 +7,7 @@
   <!-- Hero -->
   <section class="container mx-auto px-6 py-20 text-center">
     <!-- Profile Image -->
-    <img src="https://blog.jankislinger.cz/images/logo.png" alt="Jan Kislinger" class="mx-auto w-32 h-32 rounded-full shadow-lg mb-6 border-4 border-white dark:border-gray-700" />
+    <img src="{{ url_for("static", filename="head.png") }}" alt="Jan Kislinger" class="mx-auto w-32 h-32 rounded-full shadow-lg mb-6 border-4 border-white dark:border-gray-700" />
     <h1 class="text-5xl md:text-6xl font-extrabold mb-4">Jan Kislinger</h1>
     <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400">Data Scientist @ Peacock & Sky | PhD Researcher in Recommender Systems</p>
   </section>
@@ -21,7 +21,7 @@
   <!-- Resume -->
   <section id="resume" class="container mx-auto px-6 py-12 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
     <h2 class="text-4xl font-semibold mb-4">Resume</h2>
-    <a href="jan-kislinger.pdf" download class="inline-block bg-blue-600 text-white px-5 py-3 rounded-lg shadow-md hover:bg-blue-700 transition">Download PDF</a>
+    <a href="{{ url_for("static", filename="jan-kislinger.pdf") }}" download class="inline-block bg-blue-600 text-white px-5 py-3 rounded-lg shadow-md hover:bg-blue-700 transition">Download PDF</a>
     <div class="mt-8 grid gap-8 md:grid-cols-2">
       <div class="space-y-4">
         <h3 class="text-2xl font-semibold">Experience Highlights</h3>
@@ -62,7 +62,7 @@
           <h3 class="text-2xl font-bold mb-2 group-hover:text-blue-600 transition-colors">{{ post.title }}</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">{{ post.publish_date.strftime("%B %-d, %Y") }}</p>
           <p class="leading-relaxed mb-4">{{ post.stub }}</p>
-          <a href="#" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">Read More →</a>
+          <span class="text-blue-600 dark:text-blue-400 font-medium hover:underline">Read More →</span>
         </article>
       </a>
     {% endfor %}
