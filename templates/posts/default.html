@@ -1,19 +1,19 @@
 <article class="container mx-auto px-6 max-w-3xl mb-12">
 
-  <p class="mb-6 text-gray-300">If you've ever opened your favorite app—whether for videos, music, shopping, or beyond—you’ve likely seen multiple rows—or "carousels"—of recommendations: “Keep Watching,” “Just for You,” “Hot Right Now,” and so on. Yet, much of the academic research out there still focuses on a single ranked list—a single column of suggestions. That mismatch between real-world interfaces and research is exactly what inspired us to write <a href="{{ url_for("static", filename="full-page-recommender.pdf") }}" download><strong>“Full-Page Recommender: A Modular Framework for Multi-Carousel Recommendations,”</strong></a> which we will present at RecSys ’25 in Prague later this year.</p>
-  <p class="mb-8 text-gray-300">In this blog post, we’ll walk you through why multi-carousel layouts matter, how our framework tackles the challenge, and what it could mean for the next generation of recommendation experiences (see panels below for a visual example).</p>
+  <p>If you've ever opened your favorite app—whether for videos, music, shopping, or beyond—you’ve likely seen multiple rows—or "carousels"—of recommendations: “Keep Watching,” “Just for You,” “Hot Right Now,” and so on. Yet, much of the academic research out there still focuses on a single ranked list—a single column of suggestions. That mismatch between real-world interfaces and research is exactly what inspired us to write <a href="{{ url_for("static", filename="full-page-recommender.pdf") }}" download class="inline-link">“Full-Page Recommender: A Modular Framework for Multi-Carousel Recommendations,”</a> which we will present at RecSys ’25 in Prague later this year.</p>
+  <p>In this blog post, we’ll walk you through why multi-carousel layouts matter, how our framework tackles the challenge, and what it could mean for the next generation of recommendation experiences (see panels below for a visual example).</p>
 
   <div class="not-prose my-8">
     <div class="flex flex-col md:flex-row items-center gap-4">
       <div class="w-full md:w-1/2 bg-gray-800 p-4 rounded-lg ring-1 ring-gray-800">
-        <h3 class="text-2xl font-semibold mb-4 text-gray-100">Top Picks</h3>
+        <h3>Top Picks</h3>
         <div class="grid grid-cols-3 gap-4">
-          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/jLLtx3nTRSLGPAKl4RoIv1FbEBr.jpg" alt="The Family Plan" class="w-full rounded-lg bg-gray-800 p-1 transform transition duration-300 hover:scale-105" />
-          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/zTgMFlHG5D1EqdQDhfOTAsyzGoX.jpg" alt="Bullet Train" class="w-full rounded-lg bg-gray-800 p-1 transform transition duration-300 hover:scale-105" />
-          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/cQN9rZj06rXMVkk76UF1DfBAico.jpg" alt="Ice Road: Vengeance" class="w-full rounded-lg bg-gray-800 p-1 transform transition duration-300 hover:scale-105" />
-          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/1RICxzeoNCAO5NpcRMIgg1XT6fm.jpg" alt="Jurassic World Rebirth" class="w-full rounded-lg bg-gray-800 p-1 transform transition duration-300 hover:scale-105" />
-          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg" alt="Guardians of the Galaxy Vol. 3" class="w-full rounded-lg bg-gray-800 p-1 transform transition duration-300 hover:scale-105" />
-          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/8j58iEBw9pOXFD2L0nt0ZXeHviB.jpg" alt="Once Upon a Time... in Hollywood" class="w-full rounded-lg bg-gray-800 p-1 transform transition duration-300 hover:scale-105" />
+          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/jLLtx3nTRSLGPAKl4RoIv1FbEBr.jpg" alt="The Family Plan" class="thumbnail" />
+          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/zTgMFlHG5D1EqdQDhfOTAsyzGoX.jpg" alt="Bullet Train" class="thumbnail" />
+          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/cQN9rZj06rXMVkk76UF1DfBAico.jpg" alt="Ice Road: Vengeance" class="thumbnail" />
+          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/1RICxzeoNCAO5NpcRMIgg1XT6fm.jpg" alt="Jurassic World Rebirth" class="thumbnail" />
+          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg" alt="Guardians of the Galaxy Vol. 3" class="thumbnail" />
+          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/8j58iEBw9pOXFD2L0nt0ZXeHviB.jpg" alt="Once Upon a Time... in Hollywood" class="thumbnail" />
         </div>
       </div>
 
@@ -23,93 +23,89 @@
       </div>
 
       <div class="w-full md:w-1/2 bg-gray-800 p-4 rounded-lg ring-1 ring-gray-800">
-        <h3 class="text-2xl font-semibold mb-4 text-gray-100">Comedies</h3>
+        <h3>Comedies</h3>
         <div class="grid grid-cols-3 gap-4 mb-6">
-          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/jLLtx3nTRSLGPAKl4RoIv1FbEBr.jpg" alt="The Family Plan" class="w-full rounded-lg bg-gray-800 p-1 transform transition duration-300 hover:scale-105" />
-          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg" alt="Parasite" class="w-full rounded-lg bg-gray-800 p-1 transform transition duration-300 hover:scale-105" />
-          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/zTgMFlHG5D1EqdQDhfOTAsyzGoX.jpg" alt="Bullet Train" class="w-full rounded-lg bg-gray-800 p-1 transform transition duration-300 hover:scale-105" />
+          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/jLLtx3nTRSLGPAKl4RoIv1FbEBr.jpg" alt="The Family Plan" class="thumbnail" />
+          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg" alt="Parasite" class="thumbnail" />
+          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/zTgMFlHG5D1EqdQDhfOTAsyzGoX.jpg" alt="Bullet Train" class="thumbnail" />
         </div>
-        <h3 class="text-2xl font-semibold mb-4 text-gray-100">Recent Releases</h3>
+        <h3>Recent Releases</h3>
         <div class="grid grid-cols-3 gap-4">
-          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/cQN9rZj06rXMVkk76UF1DfBAico.jpg" alt="Ice Road: Vengeance" class="w-full rounded-lg bg-gray-800 p-1 transform transition duration-300 hover:scale-105" />
-          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/1RICxzeoNCAO5NpcRMIgg1XT6fm.jpg" alt="Jurassic World Rebirth" class="w-full rounded-lg bg-gray-800 p-1 transform transition duration-300 hover:scale-105" />
-          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/ynT06XivgBDkg7AtbDbX1dJeBGY.jpg" alt="Happy Gilmore 2" class="w-full rounded-lg bg-gray-800 p-1 transform transition duration-300 hover:scale-105" />
+          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/cQN9rZj06rXMVkk76UF1DfBAico.jpg" alt="Ice Road: Vengeance" class="thumbnail" />
+          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/1RICxzeoNCAO5NpcRMIgg1XT6fm.jpg" alt="Jurassic World Rebirth" class="thumbnail" />
+          <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/ynT06XivgBDkg7AtbDbX1dJeBGY.jpg" alt="Happy Gilmore 2" class="thumbnail" />
         </div>
       </div>
     </div>
   </div>
 
-    <hr class="border-t border-gray-700 my-8">
+    <hr>
 
-    <h2 class="text-2xl font-bold mb-4">Why Carousels?</h2>
+    <h2>Why Carousels?</h2>
 
     <h3 class="text-xl font-semibold mb-2">1. Reflecting Real User Behavior</h3>
-    <p class="mb-4">When platforms use carousels, users naturally scan pages in an F-shaped pattern—glancing at the top carousels before scrolling down or swiping horizontally. By flattening everything into one long list, traditional evaluation methods miss the way people actually browse.</p>
+    <p>When platforms use carousels, users naturally scan pages in an F-shaped pattern—glancing at the top carousels before scrolling down or swiping horizontally. By flattening everything into one long list, traditional evaluation methods miss the way people actually browse.</p>
 
     <h3 class="text-xl font-semibold mb-2">2. Balancing Multiple Goals</h3>
-    <p class="mb-4">A strong carousel page has to juggle different objectives:</p>
-    <ul class="list-disc list-inside mb-4 space-y-1">
+    <p>A strong carousel page has to juggle different objectives:</p>
+    <ul>
       <li><strong>Relevance</strong>: Surfacing what a user is most likely to enjoy.</li>
       <li><strong>Diversity</strong>: Keeping the page fresh, so it doesn’t feel repetitive.</li>
       <li><strong>Coherence</strong>: Ensuring each row sticks to a theme—think “Romantic Comedies” or “Nature Documentaries.”</li>
       <li><strong>Deduplication</strong>: Avoiding the same item appearing in multiple rows.</li>
     </ul>
-    <p class="mb-8">Pushing relevance too hard can hurt diversity; focusing only on diversity might dilute relevance. Our framework seeks a balanced, principled approach.</p>
+    <p>Pushing relevance too hard can hurt diversity; focusing only on diversity might dilute relevance. Our framework seeks a balanced, principled approach.</p>
 
-    <hr class="border-t border-gray-700 my-8">
+    <hr>
 
-    <h2 class="text-2xl font-bold mb-4">Our Three-Part, Modular Approach</h2>
-    <p class="mb-4">We break the problem into three pieces, each manageable on its own:</p>
-    <ol class="list-decimal list-inside mb-8 space-y-4">
-      <li><strong>Item Ranking</strong><br class="block sm:hidden" />We start with a standard recommendation model—matrix factorization, autoencoders, or transformers—that assigns each item a “relevance score” for the user.</li>
-      <li><strong>Collection Generation</strong><br class="block sm:hidden" />Next, we group items into coherent “collections.” These could be broad genres (Comedy), niche themes (Heist Movies), or editorial picks. In our experiments, we tried:
-        <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
-          <li>Metadata-based grouping (using tags like “comedy” or “historical”)</li>
-          <li>Clustering in an embedding space, so items with similar user-behavior patterns get grouped</li>
-          <li>Hybrid, editorially curated lists (e.g., “Editor’s Picks”)</li>
-        </ul>
-        Because items can belong to multiple collections—just like a movie can be both Comedy and Romance—we preserve flexibility.
-      </li>
-      <li><strong>Carousel Layout Optimization</strong><br class="block sm:hidden" />Finally, we assemble the collections into a vertical list of carousels using a greedy, sequential algorithm. At each step:
-        <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
-          <li>We calculate a combined score for each potential carousel based on item relevance and “freshness” (to avoid duplicates).</li>
-          <li>We pick the top-scoring carousel for the next row, then update item freshness (“temperature”) before moving on.</li>
-        </ul>
-        This greedy method approximates a global optimum well enough and runs quickly in real-time.
-      </li>
-    </ol>
+    <h2>Our Three-Part, Modular Approach</h2>
+    <p>We break the problem into three pieces, each manageable on its own:</p>
+      <p><strong>1. Item Ranking.</strong> <br class="block sm:hidden" />We start with a standard recommendation model—matrix factorization, autoencoders, or transformers—that assigns each item a “relevance score” for the user.</p>
+      <p><strong>2. Collection Generation</strong><br class="block sm:hidden" />Next, we group items into coherent “collections.” These could be broad genres (Comedy), niche themes (Heist Movies), or editorial picks. In our experiments, we tried:</p>
+      <ul>
+        <li>Metadata-based grouping (using tags like “comedy” or “historical”)</li>
+        <li>Clustering in an embedding space, so items with similar user-behavior patterns get grouped</li>
+        <li>Hybrid, editorially curated lists (e.g., “Editor’s Picks”)</li>
+      </ul>
+    <p>Because items can belong to multiple collections—just like a movie can be both Comedy and Romance—we preserve flexibility.</p>
+    <p><strong>Carousel Layout Optimization</strong><br class="block sm:hidden" />Finally, we assemble the collections into a vertical list of carousels using a greedy, sequential algorithm. At each step:</p>
+      <ul>
+        <li>We calculate a combined score for each potential carousel based on item relevance and “freshness” (to avoid duplicates).</li>
+        <li>We pick the top-scoring carousel for the next row, then update item freshness (“temperature”) before moving on.</li>
+      </ul>
+    <p>This greedy method approximates a global optimum well enough and runs quickly in real-time.</p>
 
-    <hr class="border-t border-gray-700 my-8">
+    <hr>
 
-    <h2 class="text-2xl font-bold mb-4">Measuring Success Beyond Accuracy</h2>
-    <p class="mb-4">Instead of simply flattening everything into one list, we simulate real user behavior:</p>
-    <ul class="list-disc list-inside mb-4 space-y-1">
+    <h2>Measuring Success Beyond Accuracy</h2>
+    <p>Instead of simply flattening everything into one list, we simulate real user behavior:</p>
+    <ul>
       <li><strong>F-Shaped Scanning</strong>: We weight items based on where they appear on the page, prioritizing the top-left.</li>
       <li><strong>Interest Dynamics</strong>: As a simulated user browses, their interest increases when they find relevant items and fades when they don’t.</li>
     </ul>
-    <p class="mb-8">By converting the page into a “viewing sequence,” we can apply classic metrics like DCG or precision@k in a way that respects layout.</p>
+    <p>By converting the page into a “viewing sequence,” we can apply classic metrics like DCG or precision@k in a way that respects layout.</p>
 
-    <hr class="border-t border-gray-700 my-8">
+    <hr>
 
-    <h2 class="text-2xl font-bold mb-4">Why This Matters</h2>
-    <p class="mb-4">Shifting from single lists to full-page carousels isn’t just cosmetic. It directly affects:</p>
-    <ul class="list-disc list-inside mb-4 space-y-1">
+    <h2>Why This Matters</h2>
+    <p>Shifting from single lists to full-page carousels isn’t just cosmetic. It directly affects:</p>
+    <ul>
       <li><strong>Discovery</strong>: Improved diversity helps surface unexpected delights.</li>
       <li><strong>Engagement</strong>: Better layouts keep users exploring longer.</li>
       <li><strong>Business Metrics</strong>: Platforms can showcase new or high-margin items without hurting user satisfaction.</li>
     </ul>
-    <p class="mb-8">Whether you’re a researcher, product manager, or an avid streamer, understanding this framework sheds light on where recommendation interfaces are headed.</p>
+    <p>Whether you’re a researcher, product manager, or an avid streamer, understanding this framework sheds light on where recommendation interfaces are headed.</p>
 
-    <hr class="border-t border-gray-700 my-8">
+    <hr>
 
-    <h2 class="text-2xl font-bold mb-4">Looking Forward</h2>
-    <p class="mb-4">In the paper, we suggest several next steps:</p>
-    <ul class="list-disc list-inside space-y-1 mb-8">
+    <h2>Looking Forward</h2>
+    <p>In the paper, we suggest several next steps:</p>
+    <ul>
       <li><strong>Joint Optimization</strong>: Planning multiple carousels together instead of one-by-one.</li>
       <li><strong>Automatic Labeling</strong>: Leveraging language models to craft catchy, accurate carousel titles.</li>
       <li><strong>Live A/B Testing</strong>: Putting these ideas to the test on real platforms.</li>
     </ul>
-    <p class="text-lg italic">As multi-carousel layouts become even more prevalent—from video streaming to online shopping—we hope our Full-Page Recommender framework provides a solid foundation for the next wave of discovery engines.</p>
+    <p class="text-lg italic my-4">As multi-carousel layouts become even more prevalent—from video streaming to online shopping—we hope our Full-Page Recommender framework provides a solid foundation for the next wave of discovery engines.</p>
+    <p class="text-lg italic my-4">Happy scrolling...</p>
 
-  <p class="mt-8 text-right"><em>Happy scrolling...</em></p>
 </article>
