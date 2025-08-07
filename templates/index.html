@@ -55,16 +55,19 @@
 
   <!-- Blog -->
   <section id="blog" class="container mx-auto px-6 py-12 max-w-3xl">
-    <a href="/post">
-      <h2 class="text-4xl font-semibold mb-6 border-b-2 border-blue-600 inline-block">Latest Blog Post</h2>
-      <article class="group bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 hover:shadow-xl transition-shadow duration-300">
-        <h3 class="text-2xl font-bold mb-2 group-hover:text-blue-600 transition-colors">Understanding Multi-Layered Clustering in Recommender Systems</h3>
-        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">August 1, 2025</p>
-        <p class="leading-relaxed mb-4">In this post, I dive into how multi-layered clustering can structure recommendation carousels on streaming platforms, improving both diversity and relevance. I'll explore algorithmic approaches and share evaluation metrics.</p>
-        <a href="#" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">Read More →</a>
-      </article>
-    </a>
-  </section>
+  <h2 class="text-4xl font-semibold mb-6 border-b-2 border-blue-600 inline-block">Latest Blog Posts</h2>
+    {% for post in posts %}
+      <a href="{{ url_for("post_full_page_recommender") }}">
+        <article class="group bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 my-8 hover:shadow-xl transition-shadow duration-300">
+          <h3 class="text-2xl font-bold mb-2 group-hover:text-blue-600 transition-colors">{{ post.title }}</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">{{ post.publish_date.strftime("%B %-d, %Y") }}</p>
+          <p class="leading-relaxed mb-4">{{ post.stub }}</p>
+          <a href="#" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">Read More →</a>
+        </article>
+      </a>
+    {% endfor %}
+</section>
+
 
   <!-- Contact -->
   <section id="contact" class="container mx-auto px-6 py-12 max-w-3xl">

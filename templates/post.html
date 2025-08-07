@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 
-{% block title %}Understanding Multi-Layered Clustering | Jan Kislinger{% endblock %}
+{% block title %}{{ post.title }} | Jan Kislinger{% endblock %}
 
 {% block content %}
 
   <!-- Post Hero -->
   <section class="container mx-auto px-6 py-20">
     <h1 class="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-violet-400">
-      Bringing the "Carousel" Experience to Recommender Systems
+      {{ post.title}}
     </h1>
-    <p class="text-gray-500 dark:text-gray-400 mb-12">August 1, 2025 by Jan Kislinger</p>
+    <p class="text-gray-500 dark:text-gray-400 mb-12">{{ post.publish_date.strftime("%B %-d, %Y") }}</p>
   </section>
 
   <!-- Post Content -->
-  {% include 'posts/default.html' %}
+  {% include post.html_file %}
 
 {% endblock %}
 
