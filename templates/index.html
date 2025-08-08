@@ -8,7 +8,7 @@
   <section class="container mx-auto px-6 py-20 text-center">
     <!-- Profile Image -->
     <img src="{{ url_for("static", filename="head.png") }}" alt="Jan Kislinger" class="mx-auto w-32 h-32 rounded-full shadow-lg mb-6 border-4 border-white dark:border-gray-700" />
-    <h1 class="text-5xl md:text-6xl font-extrabold mb-4">Jan Kislinger</h1>
+    <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Jan Kislinger</h1>
     <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400">Data Scientist @ Peacock & Sky | PhD Researcher in Recommender Systems</p>
   </section>
 
@@ -19,7 +19,7 @@
   </section>
 
   <!-- Resume -->
-  <section id="resume" class="container mx-auto px-6 py-12 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
+  <section id="resume" class="container mx-auto px-6 py-12 bg-gray-200 dark:bg-gray-800 rounded-2xl shadow-lg">
     <h2 class="text-4xl font-semibold mb-4">Resume</h2>
     <a href="{{ url_for("static", filename="jan-kislinger.pdf") }}" download class="inline-block bg-blue-600 text-white px-5 py-3 rounded-lg shadow-md hover:bg-blue-700 transition">Download PDF</a>
     <div class="mt-8 grid gap-8 md:grid-cols-2">
@@ -41,13 +41,13 @@
         </ul>
         <h4 class="mt-4 text-xl font-semibold">Technical Stack</h4>
         <div class="flex flex-wrap gap-2 mt-2">
-          <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Python</span>
-          <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">TensorFlow</span>
-          <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Polars</span>
-          <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">BigQuery</span>
-          <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Rust</span>
-          <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">SQL</span>
-          <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm">Flask</span>
+          <span class="badge bg-blue-100 text-blue-800">Python</span>
+          <span class="badge bg-green-100 text-green-800">TensorFlow</span>
+          <span class="badge bg-purple-100 text-purple-800">Polars</span>
+          <span class="badge bg-yellow-100 text-yellow-800">BigQuery</span>
+          <span class="badge bg-red-100 text-red-800">Rust</span>
+          <span class="badge bg-indigo-100 text-indigo-800">SQL</span>
+          <span class="badge bg-teal-100 text-teal-800">Flask</span>
         </div>
       </div>
     </div>
@@ -58,7 +58,7 @@
   <h2 class="text-4xl font-semibold mb-6 border-b-2 border-blue-600 inline-block">Latest Blog Posts</h2>
     {% for post in posts %}
       <a href="{{ url_for("post_full_page_recommender") }}">
-        <article class="group bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 my-8 hover:shadow-xl transition-shadow duration-300">
+        <article class="group bg-gray-200 dark:bg-gray-800 rounded-2xl shadow-md p-6 my-8 hover:shadow-xl transition-shadow duration-300">
           <h3 class="text-2xl font-bold mb-2 group-hover:text-blue-600 transition-colors">{{ post.title }}</h3>
           <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">{{ post.publish_date.strftime("%B %-d, %Y") }}</p>
           <p class="leading-relaxed mb-4">{{ post.stub }}</p>
