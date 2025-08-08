@@ -1,12 +1,21 @@
 <article class="container mx-auto px-6 max-w-3xl mb-12">
 
-  <p>If you've ever opened your favorite app—whether for videos, music, shopping, or beyond—you’ve likely seen multiple rows—or "carousels"—of recommendations: “Keep Watching,” “Just for You,” “Hot Right Now,” and so on. Yet, much of the academic research out there still focuses on a single ranked list—a single column of suggestions. That mismatch between real-world interfaces and research is exactly what inspired us to write <a href="{{ url_for("static", filename="full-page-recommender.pdf") }}" download class="inline-link">“Full-Page Recommender: A Modular Framework for Multi-Carousel Recommendations,”</a> which we will present at RecSys ’25 in Prague later this year.</p>
-  <p>In this blog post, we’ll walk you through why multi-carousel layouts matter, how our framework tackles the challenge, and what it could mean for the next generation of recommendation experiences (see panels below for a visual example).</p>
+  <p>
+    When you open your favorite app—whether for videos, music, shopping—you don’t see a single endless list of movies.
+    Instead, you’re greeted by a page full of carousels — “Top Picks for You,” “Because You Watched…,” “Award Winners,” “Family Comedies.”
+    This layout is not just prettier — it’s a completely different recommendation problem.
+    Yet, much of the academic research out there still focuses on a single ranked list—a single column of suggestions.
+  </p>
+
+  <p>
+    Our recent research, <a href="{{ url_for("static", filename="full-page-recommender.pdf") }}" download class="inline-link">“Full-Page Recommender: A Modular Framework for Multi-Carousel Recommendations,”</a> looks at how to generate these complex, multi-row pages in a way that feels coherent, personal, and engaging.
+    In other words, the challenge is figuring out how to go from one ranked list of “Top Picks for You” to a fully personalized page where each carousel offers contextual information tailored to the viewer.
+  </p>
 
   <div class="not-prose my-8">
     <div class="flex flex-col md:flex-row items-center gap-4">
       <div class="container mx-auto px-6 py-12 bg-gray-200 dark:bg-gray-800 rounded-2xl shadow-lg">
-        <h3>Top Picks</h3>
+        <h3>Top Picks for You</h3>
         <div class="grid grid-cols-3 gap-4">
           <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/jLLtx3nTRSLGPAKl4RoIv1FbEBr.jpg" alt="The Family Plan" class="thumbnail" />
           <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/zTgMFlHG5D1EqdQDhfOTAsyzGoX.jpg" alt="Bullet Train" class="thumbnail" />
@@ -61,14 +70,14 @@
     <h2>Our Three-Part, Modular Approach</h2>
     <p>We break the problem into three pieces, each manageable on its own:</p>
       <p><strong>1. Item Ranking.</strong> <br class="block sm:hidden" />We start with a standard recommendation model—matrix factorization, autoencoders, or transformers—that assigns each item a “relevance score” for the user.</p>
-      <p><strong>2. Collection Generation</strong><br class="block sm:hidden" />Next, we group items into coherent “collections.” These could be broad genres (Comedy), niche themes (Heist Movies), or editorial picks. In our experiments, we tried:</p>
+      <p><strong>2. Collection Generation.</strong> <br class="block sm:hidden" />Next, we group items into coherent “collections.” These could be broad genres (Comedy), niche themes (Heist Movies), or editorial picks. In our experiments, we tried:</p>
       <ul>
         <li>Metadata-based grouping (using tags like “comedy” or “historical”)</li>
         <li>Clustering in an embedding space, so items with similar user-behavior patterns get grouped</li>
-        <li>Hybrid, editorially curated lists (e.g., “Editor’s Picks”)</li>
+        <li>Editorially curated lists (e.g., “Editor’s Picks”)</li>
       </ul>
     <p>Because items can belong to multiple collections—just like a movie can be both Comedy and Romance—we preserve flexibility.</p>
-    <p><strong>Carousel Layout Optimization</strong><br class="block sm:hidden" />Finally, we assemble the collections into a vertical list of carousels using a greedy, sequential algorithm. At each step:</p>
+    <p><strong>3. Carousel Layout Optimization.</strong> <br class="block sm:hidden" />Finally, we assemble the collections into a vertical list of carousels using a greedy, sequential algorithm. At each step:</p>
       <ul>
         <li>We calculate a combined score for each potential carousel based on item relevance and “freshness” (to avoid duplicates).</li>
         <li>We pick the top-scoring carousel for the next row, then update item freshness (“temperature”) before moving on.</li>
@@ -77,24 +86,22 @@
 
     <hr>
 
-    <h2>Measuring Success Beyond Accuracy</h2>
-    <p>Instead of simply flattening everything into one list, we simulate real user behavior:</p>
-    <ul>
-      <li><strong>F-Shaped Scanning</strong>: We weight items based on where they appear on the page, prioritizing the top-left.</li>
-      <li><strong>Interest Dynamics</strong>: As a simulated user browses, their interest increases when they find relevant items and fades when they don’t.</li>
-    </ul>
-    <p>By converting the page into a “viewing sequence,” we can apply classic metrics like DCG or precision@k in a way that respects layout.</p>
-
-    <hr>
-
     <h2>Why This Matters</h2>
-    <p>Shifting from single lists to full-page carousels isn’t just cosmetic. It directly affects:</p>
+    <p>
+      Shifting from single lists to full-page carousels isn’t just cosmetic.
+      This approach personalizes not just the items but the context in which they appear.
+      It encourages exploration by offering multiple entry points into the catalog, while still letting platforms balance business goals — whether that’s promoting new releases, highlighting award winners, or reviving older titles.
+    </p>
+
+    <p>
+Although we tested on movie data, the same principles work elsewhere:
+
+    </p>
     <ul>
-      <li><strong>Discovery</strong>: Improved diversity helps surface unexpected delights.</li>
-      <li><strong>Engagement</strong>: Better layouts keep users exploring longer.</li>
-      <li><strong>Business Metrics</strong>: Platforms can showcase new or high-margin items without hurting user satisfaction.</li>
+      <li>Music apps grouping tracks into <i>Chill Beats</i>, <i>New Releases</i>, or <i>Throwback Hits</i>.</li>
+      <li>E-commerce sites mixing <i>Top in Electronics</i> with <i>Customers Also Bought</i> and <i>Seasonal Picks</i>.</li>
+      <li>News platforms balancing <i>Breaking News</i> with <i>In-Depth Analysis</i> and <i>Opinion</i>.</li>
     </ul>
-    <p>Whether you’re a researcher, product manager, or an avid streamer, understanding this framework sheds light on where recommendation interfaces are headed.</p>
 
     <hr>
 
