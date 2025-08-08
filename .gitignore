@@ -1,5 +1,6 @@
 .venv
 .tmp
 build
+screenshots
 
 tailwindcss
