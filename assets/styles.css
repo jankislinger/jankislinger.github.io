@@ -18,3 +18,104 @@ article {
     @apply w-full rounded-lg p-1 transform transition duration-300 hover:scale-105;
   }
 }
+
+
+/* ============ Container ============ */
+.codehilite { @apply relative my-6 rounded-xl ring-1 ring-black/5 dark:ring-white/10 overflow-auto; }
+.codehilite pre { @apply m-0 p-4 leading-relaxed font-mono text-sm bg-white dark:bg-zinc-900; }
+.codehilite code { @apply font-mono; }
+
+/* Optional line highlight background used by some formatters */
+.codehilite .hll { @apply bg-yellow-100/60 dark:bg-yellow-900/30; }
+
+/* Whitespace (don’t dim too hard) */
+.codehilite .w { @apply text-zinc-400 dark:text-zinc-500; }
+
+/* Punctuation */
+.codehilite .p { @apply text-zinc-700 dark:text-zinc-300; }
+
+/* ============ Comments ============ */
+.codehilite .c,
+.codehilite .ch,   /* Hashbang */
+.codehilite .cm,   /* Multiline */
+.codehilite .cp,   /* Preproc */
+.codehilite .c1,   /* Single */
+.codehilite .cs {  /* Special */
+  @apply italic text-slate-500 dark:text-slate-400;
+}
+
+/* ============ Errors / Warnings ============ */
+.codehilite .err { @apply text-rose-600 dark:text-rose-400 underline decoration-rose-400/60; }
+
+/* ============ Keywords ============ */
+.codehilite .k,
+.codehilite .kc,   /* Const */
+.codehilite .kd,   /* Decl */
+.codehilite .kn,   /* Namespace */
+.codehilite .kp,   /* Pseudo */
+.codehilite .kr,   /* Reserved */
+.codehilite .kt {  /* Type */
+  @apply text-fuchsia-700 dark:text-fuchsia-300 font-semibold;
+}
+
+/* ============ Names ============ */
+.codehilite .n { @apply text-zinc-800 dark:text-zinc-200; }
+.codehilite .na { @apply text-sky-700 dark:text-sky-300; }         /* Attribute */
+.codehilite .nb { @apply text-indigo-700 dark:text-indigo-300; }   /* Builtin */
+.codehilite .bp { @apply text-indigo-700 dark:text-indigo-300; }   /* Builtin.Pseudo */
+.codehilite .nc { @apply text-emerald-700 dark:text-emerald-300; } /* Class */
+.codehilite .no { @apply text-amber-700 dark:text-amber-300; }     /* Constant */
+.codehilite .nd { @apply text-rose-700 dark:text-rose-300; }       /* Decorator */
+.codehilite .ni { @apply text-teal-700 dark:text-teal-300; }       /* Entity */
+.codehilite .ne { @apply text-rose-700 dark:text-rose-300; }       /* Exception */
+.codehilite .nf { @apply text-blue-700 dark:text-blue-300; }       /* Function */
+.codehilite .nl { @apply text-purple-700 dark:text-purple-300; }   /* Label */
+.codehilite .nn { @apply text-cyan-700 dark:text-cyan-300; }       /* Namespace */
+.codehilite .nx { @apply text-zinc-800 dark:text-zinc-200; }       /* Other/variable-like */
+.codehilite .py { @apply text-violet-700 dark:text-violet-300; }   /* Property */
+
+/* ============ Literals / Numbers ============ */
+.codehilite .l  { @apply text-amber-700 dark:text-amber-300; }
+.codehilite .ld { @apply text-amber-700 dark:text-amber-300; }      /* Date */
+.codehilite .m,
+.codehilite .mb, .codehilite .mf, .codehilite .mh,
+.codehilite .mi, .codehilite .mo, .codehilite .il {
+  @apply text-amber-700 dark:text-amber-300;                        /* Numbers */
+}
+
+/* ============ Strings ============ */
+.codehilite .s,
+.codehilite .sa, .codehilite .sb, .codehilite .sc,
+.codehilite .dl, .codehilite .s1, .codehilite .s2,
+.codehilite .se, .codehilite .sh, .codehilite .si,
+.codehilite .sr, .codehilite .ss, .codehilite .sx, .codehilite .sd {
+  @apply text-emerald-700 dark:text-emerald-300;
+}
+
+/* ============ Operators ============ */
+.codehilite .o  { @apply text-zinc-700 dark:text-zinc-300; }
+.codehilite .ow { @apply text-fuchsia-700 dark:text-fuchsia-300; }  /* Word operators (e.g., 'and', 'or') */
+
+/* ============ Generic (diffs/prompts/etc.) ============ */
+.codehilite .g  { @apply text-zinc-700 dark:text-zinc-300; }
+.codehilite .gd { @apply bg-rose-100/60 dark:bg-rose-900/30; }      /* Deleted */
+.codehilite .gi { @apply bg-emerald-100/60 dark:bg-emerald-900/30; }/* Inserted */
+.codehilite .gr { @apply text-rose-700 dark:text-rose-300; }        /* Error */
+.codehilite .ge { @apply italic; }                                  /* Emphasis */
+.codehilite .gh { @apply text-purple-700 dark:text-purple-300; }    /* Heading */
+.codehilite .go { @apply text-zinc-500 dark:text-zinc-400; }        /* Output */
+.codehilite .gp { @apply text-zinc-500 dark:text-zinc-400; }        /* Prompt */
+.codehilite .gs { @apply font-semibold; }                           /* Strong */
+.codehilite .gu { @apply text-sky-700 dark:text-sky-300; }          /* Subheading */
+.codehilite .gt { @apply text-rose-700 dark:text-rose-300; }        /* Traceback */
+
+/* ============ Misc ============ */
+.codehilite .nn, .codehilite .nt, .codehilite .nv, .codehilite .vc, .codehilite .vg, .codehilite .vi {
+  @apply text-zinc-800 dark:text-zinc-200;
+}
+
+/* Selection & scrollbar (optional) */
+.codehilite ::selection { background-color: rgb(147 197 253 / .35); }
+.codehilite *::-webkit-scrollbar { height: 10px; }
+.codehilite *::-webkit-scrollbar-thumb { @apply bg-zinc-300 dark:bg-zinc-600 rounded; }
+

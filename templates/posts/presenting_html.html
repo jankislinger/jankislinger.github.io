@@ -1,0 +1,89 @@
+<article class="container mx-auto px-6 max-w-3xl mb-12">
+  <header class="bg-white shadow">
+    <div class="max-w-3xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold leading-tight">Converting Tables to HTML: All the Ways</h1>
+    </div>
+  </header>
+
+    <p>According to the <a href="https://www.python.org/dev/peps/pep-0020/" class="text-blue-600 hover:underline">Zen of Python</a>, <em>there should be one—and preferably only one—obvious way to do it</em>. But when it comes to converting tables to HTML for presentation, that’s far from true. In this blog post we’ll explore all the options and help you decide which one is right for you.</p>
+
+    <h2>Why Are There So Many Options?</h2>
+    <p>Because Python has a rich ecosystem for processing tabular data—ranging from DataFrame libraries like <a href="https://pandas.pydata.org/" class="text-blue-600 hover:underline">Pandas</a> or <a href="https://www.pola.rs/" class="text-blue-600 hover:underline">Polars</a> to ORMs like <a href="https://www.sqlalchemy.org/" class="text-blue-600 hover:underline">SQLAlchemy</a>. And on the presentation side, you have everything from Jupyter notebooks to web frameworks like Django or Flask.</p>
+    <p>To keep things focused, we’ll narrow our scope to:</p>
+    <ul>
+      <li>DataFrames in <strong>Polars</strong> (with occasional detours to Pandas)</li>
+      <li>Presentation in <strong>Jupyter</strong> and <strong>Flask</strong></li>
+    </ul>
+
+    <h2>Selection Criteria</h2>
+    <p>As with any analysis, your choice depends on:</p>
+    <ul>
+      <li><strong>Audience:</strong> Who will consume the data?</li>
+      <li><strong>Delivery:</strong> HTML may not always be the best format—sometimes PDF is more appropriate.</li>
+      <li><strong>Existing Tooling:</strong> What libraries and frameworks are already part of your project?</li>
+      <li><strong>Customization:</strong> How much raw HTML/CSS are you willing to write?</li>
+    </ul>
+
+    <h2>Start Simple</h2>
+    <p>The most versatile approach is manual HTML templating in Flask. Let’s use the <em>gapminder</em> dataset as an example:</p>
+
+    <div class="bg-gray-800 p-4 rounded">
+      {{ table_01 | pyghl('html+jinja') | safe }}
+    </div>
+
+    <p>And the Flask view:</p>
+    <div class="bg-gray-100 p-4 rounded">
+      <pre><code class="language-python">import polars as pl
+from flask import render_template
+
+data = pl.DataFrame([
+    ("Austria", 65, 12345),
+    ("Belgium", 71, 23456),
+], schema=["country", "life_exp", "gdp"] )
+max_gdp = data.select(pl.col("gdp").max()).item()
+return render_template(
+    "table_template.html",
+    table=data.to_dicts(),
+    max_gdp=max_gdp
+)
+</code></pre>
+    </div>
+
+    <h2>Rendered Table Example</h2>
+    <div class="overflow-x-auto">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Country</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Life Expectancy</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">GDP per Cap.</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Austria</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+              <div class="w-full bg-gray-200 rounded overflow-hidden h-2">
+                <div class="bg-green-500 h-2" style="width:65%"></div>
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">12345</td>
+          </tr>
+          <tr class="bg-yellow-100">
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Belgium</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+              <div class="w-full bg-gray-200 rounded overflow-hidden h-2">
+                <div class="bg-green-500 h-2" style="width:71%"></div>
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">23456</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Here, the <code>prose</code> class from the Typographys plugin ensures consistent spacing and styling for headings and paragraphs. We also demonstrate inline bar charts for <em>Life Expectancy</em> and highlight the row with the highest GDP.</p>
+
+    <p>Next, we'll explore how to export DataFrames directly to HTML and integrate tables in Jupyter environments—keeping the same styling with minimal overhead.</p>
+
+</article>

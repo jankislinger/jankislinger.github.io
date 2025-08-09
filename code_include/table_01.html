@@ -1,0 +1,17 @@
+<!-- table_01.html -->
+<table>
+  <thead>
+    <tr>
+      <th>Country</th>
+      <th>Life Expectancy</th>
+      <th>GDP per Cap.</th>
+    </tr>
+  </thead>
+  {% for row in table %}
+  <tr>
+    <td>{{ row.country }}</td>
+    <td>{{ row.life_exp }}</td>
+    <td>{{ row.gdp }}</td>
+  </tr>
+  {% endfor %}
+</table>
