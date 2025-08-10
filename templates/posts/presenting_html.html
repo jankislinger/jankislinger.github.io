@@ -27,57 +27,50 @@
     <h2>Start Simple</h2>
     <p>The most versatile approach is manual HTML templating in Flask. Let’s use the <em>gapminder</em> dataset as an example:</p>
 
-    <div class="bg-gray-800 p-4 rounded">
+    <div class="code-block">
       {{ table_01 | pyghl('html+jinja') | safe }}
     </div>
 
     <p>And the Flask view:</p>
-    <div class="bg-gray-100 p-4 rounded">
-      <pre><code class="language-python">import polars as pl
-from flask import render_template
 
-data = pl.DataFrame([
-    ("Austria", 65, 12345),
-    ("Belgium", 71, 23456),
-], schema=["country", "life_exp", "gdp"] )
-max_gdp = data.select(pl.col("gdp").max()).item()
-return render_template(
-    "table_template.html",
-    table=data.to_dicts(),
-    max_gdp=max_gdp
-)
-</code></pre>
+    <div class="code-block">
+      {{ py_01 | pyghl('python') | safe }}
+    </div>
+
+    <p>The most versatile approach is manual HTML templating in Flask. Let’s use the <em>gapminder</em> dataset as an example:</p>
+
+    <div class="code-block">
+      {{ table_02 | pyghl('html+jinja') | safe }}
+    </div>
+
+    <p>And the Flask view:</p>
+
+    <div class="code-block">
+      {{ py_02 | pyghl('python') | safe }}
     </div>
 
     <h2>Rendered Table Example</h2>
     <div class="overflow-x-auto">
       <table class="min-w-full divide-y divide-gray-200">
-        <thead class="bg-gray-50">
+        <thead class="bg-gray-50 text-gray-500 uppercase">
           <tr>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Country</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Life Expectancy</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">GDP per Cap.</th>
+            <th class="px-6 py-3 text-left text-xs font-medium tracking-wider">Country</th>
+            <th class="px-6 py-3 text-left text-xs font-medium tracking-wider">Life Expectancy</th>
+            <th class="px-6 py-3 text-left text-xs font-medium tracking-wider">GDP per Cap.</th>
           </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
-          <tr>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Austria</td>
+          {% for row in df_02 %}
+          <tr{% if row.is_max_gdp %} class="bg-yellow-100"{% endif %}>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ row.country }}</td>
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
               <div class="w-full bg-gray-200 rounded overflow-hidden h-2">
-                <div class="bg-green-500 h-2" style="width:65%"></div>
+                <div class="bg-green-500 h-2" style="width:{{ row.life_exp }}%"></div>
               </div>
             </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">12345</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-semibold">{{ "{:,.0f}".format(row.gdp_per_cap) }}</td>
           </tr>
-          <tr class="bg-yellow-100">
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Belgium</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-              <div class="w-full bg-gray-200 rounded overflow-hidden h-2">
-                <div class="bg-green-500 h-2" style="width:71%"></div>
-              </div>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">23456</td>
-          </tr>
+          {% endfor %}
         </tbody>
       </table>
     </div>

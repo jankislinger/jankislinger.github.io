@@ -16,4 +16,4 @@ formatter = HtmlFormatter(cssclass="codehilite", nowrap=False)
 highlighted_code = highlight(code, PythonLexer(), formatter)
 
 print(highlighted_code)  # contains <span> tags
-print(HtmlFormatter().get_style_defs('.codehilite'))  # CSS to include
+print(HtmlFormatter().get_style_defs(".codehilite"))  # CSS to include

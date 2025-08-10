@@ -4,116 +4,20 @@
 .badge { @apply px-3 py-1 rounded-full text-sm; }
 
 article {
-  hr  { @apply border-t border-gray-300 dark:border-gray-700 my-8; }
-  h2  { @apply text-2xl font-bold mb-4; }
-  h3  { @apply text-xl font-semibold mb-2; }
-  p   { @apply mb-4; }
-  ul  { @apply list-disc px-5; }
-  li  { @apply mb-2; }
+    hr  { @apply border-t border-gray-300 dark:border-gray-700 my-8; }
+    h2  { @apply text-2xl font-bold mb-4; }
+    h3  { @apply text-xl font-semibold mb-2; }
+    p   { @apply mb-4; }
+    ul  { @apply list-disc px-5; }
+    li  { @apply mb-2; }
 
-  .inline-link {
-    @apply font-semibold hover:underline;
-  }
-  .thumbnail {
-    @apply w-full rounded-lg p-1 transform transition duration-300 hover:scale-105;
-  }
+    .inline-link {
+        @apply font-semibold hover:underline;
+    }
+    .thumbnail {
+        @apply w-full rounded-lg p-1 transform transition duration-300 hover:scale-105;
+    }
+    .code-block {
+        @apply p-4 text-sm rounded bg-[#f8f8f8] dark:bg-[#1d2331];
+    }
 }
-
-
-/* Container + background from themes */
-.codehilite        { @apply rounded-xl overflow-auto ring-1 ring-black/5 dark:ring-white/10; }
-.codehilite pre    { @apply m-0 p-4 leading-relaxed font-mono text-sm bg-[#f8f8f8] dark:bg-[#1d2331]; }
-.codehilite code   { @apply font-mono; }
-
-/* Base text (fallback) */
-.codehilite        { @apply text-black dark:text-[#d4d2c8]; }
-
-/* Whitespace */
-.codehilite .w     { @apply text-[#bbbbbb] dark:text-[#6e7681]; } /* light: default; dark: theme highlight gray */
-
-/* Comments */
-.codehilite .c,
-.codehilite .cm,
-.codehilite .c1,
-.codehilite .cs    { @apply text-[#3D7B7B] dark:text-[#7e8aa1] italic; }
-.codehilite .ch    { @apply text-[#3D7B7B] dark:text-[#f88f7f] italic; } /* hashbang special */
-.codehilite .cp    { @apply text-[#9C6500] dark:text-[#FFAD66] font-bold; } /* preproc */
-
-/* Errors */
-.codehilite .err   { @apply text-[#E40000] dark:text-[#f88f7f]; }
-
-/* Keywords */
-.codehilite .k     { @apply text-[#008000] dark:text-[#FFAD66] font-bold; }
-.codehilite .kp    { @apply text-[#008000] dark:text-[#FFAD66]; }            /* Pseudo (nobold) */
-.codehilite .kt    { @apply text-[#B00040] dark:text-[#73D0FF]; }            /* Type (nobold in light) */
-.codehilite .kc,
-.codehilite .kd,
-.codehilite .kn,
-.codehilite .kr    { @apply text-[#008000] dark:text-[#FFAD66] font-bold; }  /* Const/Decl/Namespace/Reserved */
-
-/* Operators & Punctuation */
-.codehilite .o     { @apply text-[#666666] dark:text-[#FFAD66]; }
-.codehilite .ow    { @apply text-[#AA22FF] dark:text-[#FFAD66] font-bold; }  /* word operators */
-.codehilite .p     { @apply text-black dark:text-[#d4d2c8]; }                 /* punctuation */
-
-/* Names */
-.codehilite .nb    { @apply text-[#008000] dark:text-[#FFD173]; }            /* Builtin */
-.codehilite .bp    { @apply text-[#008000] dark:text-[#5CCFE6]; }            /* Builtin.Pseudo */
-.codehilite .nf    { @apply text-[#0000FF] dark:text-[#FFD173]; }            /* Function */
-.codehilite .fm    { @apply text-[#0000FF] dark:text-[#FFD173]; }            /* Function.Magic */
-.codehilite .nc    { @apply text-[#0000FF] dark:text-[#73D0FF] font-bold; }  /* Class */
-.codehilite .nn    { @apply text-[#0000FF] dark:text-[#73D0FF] font-bold; }  /* Namespace */
-.codehilite .ne    { @apply text-[#CB3F38] dark:text-[#73D0FF] font-bold; }  /* Exception */
-.codehilite .nv    { @apply text-[#19177C] dark:text-[#d4d2c8]; }            /* Variable */
-.codehilite .no    { @apply text-[#880000] dark:text-[#FFD173]; }            /* Constant */
-.codehilite .nl    { @apply text-[#767600] dark:text-[#d4d2c8]; }            /* Label */
-.codehilite .ni    { @apply text-[#717171] dark:text-[#95E6CB] font-bold; }  /* Entity */
-.codehilite .na    { @apply text-[#687822] dark:text-[#FFD173]; }            /* Attribute */
-.codehilite .nt    { @apply text-[#008000] dark:text-[#5CCFE6] font-bold; }  /* Tag */
-.codehilite .nd    { @apply text-[#AA22FF] dark:text-[#7e8aa1] italic font-bold; } /* Decorator */
-.codehilite .nx    { @apply text-black dark:text-[#d4d2c8]; }                /* Other/name-like */
-.codehilite .py    { @apply text-black dark:text-[#FFD173]; }                /* Property */
-
-/* Literals / Numbers */
-.codehilite .l     { @apply text-[#666666] dark:text-[#D5FF80]; }
-.codehilite .m,
-.codehilite .mb,
-.codehilite .mf,
-.codehilite .mh,
-.codehilite .mi,
-.codehilite .mo,
-.codehilite .il    { @apply text-[#666666] dark:text-[#DFBFFF]; }            /* Numbers */
-
-/* Strings */
-.codehilite .s,
-.codehilite .sa,
-.codehilite .sb,
-.codehilite .sc,
-.codehilite .dl,
-.codehilite .s1,
-.codehilite .s2    { @apply text-[#BA2121] dark:text-[#D5FF80]; }
-.codehilite .sd    { @apply italic text-[#BA2121] dark:text-[#7e8aa1]; }     /* Docstring */
-.codehilite .si,
-.codehilite .se    { @apply text-[#AA5D1F] dark:text-[#95E6CB] font-bold; }  /* Escape/Interpol map to bold in light */
-.codehilite .sr    { @apply text-[#A45A77] dark:text-[#95E6CB]; }            /* Regex */
-.codehilite .ss    { @apply text-[#19177C] dark:text-[#DFBFFF]; }            /* Symbol (light uses #19177C) */
-.codehilite .sx,
-.codehilite .sh,
-.codehilite .so    { @apply text-[#008000] dark:text-[#95E6CB]; }            /* Other string-ish */
-.codehilite .saffix{ @apply text-[#BA2121] dark:text-[#F29E74]; }            /* Affix (light not explicit) */
-
-/* Generic (diffs/prompts/etc.) */
-.codehilite .gh    { @apply text-[#000080] dark:text-[#d4d2c8] font-bold; }  /* Heading */
-.codehilite .gu    { @apply text-[#800080] dark:text-[#d4d2c8] font-bold; }  /* Subheading */
-.codehilite .gd    { @apply text-[#A00000] dark:text-[#f88f7f]; }            /* Deleted (fg) */
-.codehilite .gi    { @apply text-[#008400] dark:text-[#6ad4af]; }            /* Inserted (fg) */
-.codehilite .gr    { @apply text-[#E40000] dark:text-[#f88f7f]; }            /* Error */
-.codehilite .ge    { @apply italic; }                                        /* Emphasis */
-.codehilite .gs    { @apply font-bold; }                                     /* Strong */
-.codehilite .ges   { @apply font-bold italic; }                              /* EmphStrong */
-.codehilite .go    { @apply text-[#717171] dark:text-[#7e8aa1]; }            /* Output */
-.codehilite .gp    { @apply text-[#000080] dark:text-[#d4d2c8] font-bold; }  /* Prompt */
-.codehilite .gt    { @apply text-[#0044DD] dark:text-[#f88f7f]; }            /* Traceback */
-
-/* Line highlight helper (if used) */
-.codehilite .hll   { @apply bg-yellow-100/50 dark:bg-[#6e7681]/30; }
