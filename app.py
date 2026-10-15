@@ -10,11 +10,11 @@ POSTS = [
         "html_file": "posts/default.html",
         "publish_date": datetime.date(2025, 8, 7),
         "stub": (
-            "If you've ever opened your favorite app—whether for videos, music, shopping, "
-            'or beyond—you’ve likely seen multiple rows—or "carousels"—of recommendations: '
-            "“Keep Watching,” “Just for You,” “Hot Right Now,” and so on. Yet, much of the "
-            "academic research out there still focuses on a single ranked list—a single "
-            "column of suggestions."
+            "When you open your favorite app—whether for videos, music, shopping—you "
+            "don’t see a single endless list of movies. Instead, you’re greeted by a "
+            'page full of carousels — <i>Because You Watched…</i>, <i>Award Winners</i>, '
+            'or <i>Family Comedies</i>. This layout is not just prettier — '
+            "it’s a completely different recommendation problem."
         ),
     },
 ]
